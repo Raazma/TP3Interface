@@ -45,100 +45,112 @@
             // 
             // TBX_Title
             // 
-            this.TBX_Title.Location = new System.Drawing.Point(70, 12);
+            this.TBX_Title.Location = new System.Drawing.Point(93, 15);
+            this.TBX_Title.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TBX_Title.Name = "TBX_Title";
-            this.TBX_Title.Size = new System.Drawing.Size(100, 20);
+            this.TBX_Title.Size = new System.Drawing.Size(132, 22);
             this.TBX_Title.TabIndex = 0;
             this.TBX_Title.TextChanged += new System.EventHandler(this.TBX_Title_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 16);
+            this.label1.Location = new System.Drawing.Point(59, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.Size = new System.Drawing.Size(37, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Titre";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 42);
+            this.label2.Location = new System.Drawing.Point(16, 52);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.Size = new System.Drawing.Size(79, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Description";
             // 
             // TBX_Description
             // 
-            this.TBX_Description.Location = new System.Drawing.Point(70, 38);
+            this.TBX_Description.Location = new System.Drawing.Point(93, 47);
+            this.TBX_Description.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TBX_Description.Multiline = true;
             this.TBX_Description.Name = "TBX_Description";
-            this.TBX_Description.Size = new System.Drawing.Size(290, 85);
+            this.TBX_Description.Size = new System.Drawing.Size(385, 104);
             this.TBX_Description.TabIndex = 1;
             this.TBX_Description.TextChanged += new System.EventHandler(this.TBX_Description_TextChanged);
             // 
             // DTP_Date
             // 
-            this.DTP_Date.Location = new System.Drawing.Point(70, 129);
+            this.DTP_Date.Location = new System.Drawing.Point(93, 159);
+            this.DTP_Date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DTP_Date.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.DTP_Date.MinDate = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
             this.DTP_Date.Name = "DTP_Date";
-            this.DTP_Date.Size = new System.Drawing.Size(125, 20);
+            this.DTP_Date.Size = new System.Drawing.Size(165, 22);
             this.DTP_Date.TabIndex = 3;
             this.DTP_Date.ValueChanged += new System.EventHandler(this.DTP_Date_ValueChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 133);
+            this.label3.Location = new System.Drawing.Point(56, 164);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.Size = new System.Drawing.Size(38, 17);
             this.label3.TabIndex = 1;
             this.label3.Text = "Date";
             // 
             // DTP_Starting
             // 
             this.DTP_Starting.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DTP_Starting.Location = new System.Drawing.Point(70, 155);
+            this.DTP_Starting.Location = new System.Drawing.Point(93, 191);
+            this.DTP_Starting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DTP_Starting.Name = "DTP_Starting";
-            this.DTP_Starting.Size = new System.Drawing.Size(81, 20);
+            this.DTP_Starting.Size = new System.Drawing.Size(107, 22);
             this.DTP_Starting.TabIndex = 4;
             this.DTP_Starting.ValueChanged += new System.EventHandler(this.DTP_Starting_ValueChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 159);
+            this.label4.Location = new System.Drawing.Point(48, 196);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
+            this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 1;
             this.label4.Text = "Début";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(51, 185);
+            this.label5.Location = new System.Drawing.Point(68, 228);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(21, 13);
+            this.label5.Size = new System.Drawing.Size(27, 17);
             this.label5.TabIndex = 1;
             this.label5.Text = "Fin";
             // 
             // DTP_Ending
             // 
             this.DTP_Ending.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DTP_Ending.Location = new System.Drawing.Point(70, 181);
+            this.DTP_Ending.Location = new System.Drawing.Point(93, 223);
+            this.DTP_Ending.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DTP_Ending.Name = "DTP_Ending";
-            this.DTP_Ending.Size = new System.Drawing.Size(81, 20);
+            this.DTP_Ending.Size = new System.Drawing.Size(107, 22);
             this.DTP_Ending.TabIndex = 45;
             this.DTP_Ending.ValueChanged += new System.EventHandler(this.DTP_Ending_ValueChanged);
             // 
             // BTN_Ok
             // 
             this.BTN_Ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BTN_Ok.Location = new System.Drawing.Point(285, 180);
+            this.BTN_Ok.Enabled = false;
+            this.BTN_Ok.Location = new System.Drawing.Point(380, 222);
+            this.BTN_Ok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTN_Ok.Name = "BTN_Ok";
-            this.BTN_Ok.Size = new System.Drawing.Size(75, 23);
+            this.BTN_Ok.Size = new System.Drawing.Size(100, 28);
             this.BTN_Ok.TabIndex = 6;
             this.BTN_Ok.Text = "Ok";
             this.BTN_Ok.UseVisualStyleBackColor = true;
@@ -146,9 +158,10 @@
             // BTN_Cancel
             // 
             this.BTN_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BTN_Cancel.Location = new System.Drawing.Point(204, 180);
+            this.BTN_Cancel.Location = new System.Drawing.Point(272, 222);
+            this.BTN_Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTN_Cancel.Name = "BTN_Cancel";
-            this.BTN_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.BTN_Cancel.Size = new System.Drawing.Size(100, 28);
             this.BTN_Cancel.TabIndex = 5;
             this.BTN_Cancel.TabStop = false;
             this.BTN_Cancel.Text = "Annuler";
@@ -157,9 +170,10 @@
             // BTN_Effacer
             // 
             this.BTN_Effacer.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BTN_Effacer.Location = new System.Drawing.Point(285, 151);
+            this.BTN_Effacer.Location = new System.Drawing.Point(380, 186);
+            this.BTN_Effacer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTN_Effacer.Name = "BTN_Effacer";
-            this.BTN_Effacer.Size = new System.Drawing.Size(74, 23);
+            this.BTN_Effacer.Size = new System.Drawing.Size(99, 28);
             this.BTN_Effacer.TabIndex = 46;
             this.BTN_Effacer.Text = "Effacer";
             this.BTN_Effacer.UseVisualStyleBackColor = true;
@@ -168,10 +182,10 @@
             // DLG_Events
             // 
             this.AcceptButton = this.BTN_Ok;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BTN_Cancel;
-            this.ClientSize = new System.Drawing.Size(373, 215);
+            this.ClientSize = new System.Drawing.Size(497, 265);
             this.Controls.Add(this.BTN_Effacer);
             this.Controls.Add(this.BTN_Cancel);
             this.Controls.Add(this.BTN_Ok);
@@ -186,6 +200,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TBX_Title);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DLG_Events";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DLG_Events";
