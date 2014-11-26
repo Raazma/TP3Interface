@@ -603,5 +603,30 @@ namespace PasswordKeeper
                 
             }
         }
+
+        private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+         
+                DLG_Events dlg = new DLG_Events();
+                dlg.Event = Events.TargetEvent;
+                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    if (dlg.delete)
+                    {
+                        TableEvents tableEvents = new TableEvents(ConnexionString);
+                        tableEvents.DeleteEvent(dlg.Event);
+                        Events.TargetEvent = null;
+                        mouseIsDown = false;
+                    }
+                    else
+                    {
+                        TableEvents tableEvents = new TableEvents(ConnexionString);
+                        tableEvents.UpdateEventRecord(dlg.Event);
+                    }
+                    GetWeekEvents();
+                    PN_Content.Refresh();
+                }
+            
+        }
     }
 }
