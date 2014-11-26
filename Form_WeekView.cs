@@ -50,6 +50,7 @@ namespace PasswordKeeper
             ConnexionString = @"Data Source=(LocalDB)\v11.0;AttachDbFilename='" + DB_URL + "';Integrated Security=True";
             CurrentWeek = DateTime.Now;
             PN_Hours.Height = PN_Content.Height = 2400;
+            
 
         }
 
@@ -133,7 +134,7 @@ namespace PasswordKeeper
             Point location;
             DateTime date = _CurrentWeek;
             string[] dayNames = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.DayNames;//[col].Substring(0, 3).ToUpper();
-            Brush brush = new SolidBrush(Color.White);
+            Brush brush = new SolidBrush(Color.DarkGreen);
             Pen pen = new Pen(Color.LightGray, 1);
             for (int dayNum = 0; dayNum < 7; dayNum++) 
             {
@@ -151,7 +152,7 @@ namespace PasswordKeeper
 
         private void Fill_Hours_Header(Graphics DC)
         {
-            Brush brush = new SolidBrush(Color.Black);
+            Brush brush = new SolidBrush(Color.DarkGreen);
             Pen pen = new Pen(Color.LightGray, 1);
             for (int hour = 0; hour <= 24; hour++)
             {
