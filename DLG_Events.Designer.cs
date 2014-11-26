@@ -38,15 +38,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.DTP_Ending = new System.Windows.Forms.DateTimePicker();
-            this.BTN_Ok = new System.Windows.Forms.Button();
-            this.BTN_Cancel = new System.Windows.Forms.Button();
-            this.BTN_Effacer = new System.Windows.Forms.Button();
+            this.FB_Abort = new FlashButton.FlashButton();
+            this.FB_Ok = new FlashButton.FlashButton();
             this.SuspendLayout();
             // 
             // TBX_Title
             // 
             this.TBX_Title.Location = new System.Drawing.Point(93, 15);
-            this.TBX_Title.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TBX_Title.Margin = new System.Windows.Forms.Padding(4);
             this.TBX_Title.Name = "TBX_Title";
             this.TBX_Title.Size = new System.Drawing.Size(132, 22);
             this.TBX_Title.TabIndex = 0;
@@ -75,7 +74,7 @@
             // TBX_Description
             // 
             this.TBX_Description.Location = new System.Drawing.Point(93, 47);
-            this.TBX_Description.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TBX_Description.Margin = new System.Windows.Forms.Padding(4);
             this.TBX_Description.Multiline = true;
             this.TBX_Description.Name = "TBX_Description";
             this.TBX_Description.Size = new System.Drawing.Size(385, 104);
@@ -85,7 +84,7 @@
             // DTP_Date
             // 
             this.DTP_Date.Location = new System.Drawing.Point(93, 159);
-            this.DTP_Date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DTP_Date.Margin = new System.Windows.Forms.Padding(4);
             this.DTP_Date.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.DTP_Date.MinDate = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
             this.DTP_Date.Name = "DTP_Date";
@@ -107,7 +106,7 @@
             // 
             this.DTP_Starting.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.DTP_Starting.Location = new System.Drawing.Point(93, 191);
-            this.DTP_Starting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DTP_Starting.Margin = new System.Windows.Forms.Padding(4);
             this.DTP_Starting.Name = "DTP_Starting";
             this.DTP_Starting.Size = new System.Drawing.Size(107, 22);
             this.DTP_Starting.TabIndex = 4;
@@ -137,58 +136,50 @@
             // 
             this.DTP_Ending.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.DTP_Ending.Location = new System.Drawing.Point(93, 223);
-            this.DTP_Ending.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DTP_Ending.Margin = new System.Windows.Forms.Padding(4);
             this.DTP_Ending.Name = "DTP_Ending";
             this.DTP_Ending.Size = new System.Drawing.Size(107, 22);
             this.DTP_Ending.TabIndex = 45;
             this.DTP_Ending.ValueChanged += new System.EventHandler(this.DTP_Ending_ValueChanged);
             // 
-            // BTN_Ok
+            // FB_Abort
             // 
-            this.BTN_Ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BTN_Ok.Enabled = false;
-            this.BTN_Ok.Location = new System.Drawing.Point(380, 222);
-            this.BTN_Ok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.BTN_Ok.Name = "BTN_Ok";
-            this.BTN_Ok.Size = new System.Drawing.Size(100, 28);
-            this.BTN_Ok.TabIndex = 6;
-            this.BTN_Ok.Text = "Ok";
-            this.BTN_Ok.UseVisualStyleBackColor = true;
+            this.FB_Abort.BackgroundImage = global::Compact_Agenda.Properties.Resources.Abort;
+            this.FB_Abort.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FB_Abort.ImageClick = global::Compact_Agenda.Properties.Resources.Abort_Click;
+            this.FB_Abort.ImageDisable = global::Compact_Agenda.Properties.Resources.Abort_Disable;
+            this.FB_Abort.ImageNeutral = global::Compact_Agenda.Properties.Resources.Abort;
+            this.FB_Abort.ImageOver = global::Compact_Agenda.Properties.Resources.Abort;
+            this.FB_Abort.Location = new System.Drawing.Point(311, 213);
+            this.FB_Abort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FB_Abort.Name = "FB_Abort";
+            this.FB_Abort.Size = new System.Drawing.Size(48, 48);
+            this.FB_Abort.TabIndex = 48;
+            this.FB_Abort.Click += new System.EventHandler(this.FB_Abort_Click);
             // 
-            // BTN_Cancel
+            // FB_Ok
             // 
-            this.BTN_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BTN_Cancel.Location = new System.Drawing.Point(272, 222);
-            this.BTN_Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.BTN_Cancel.Name = "BTN_Cancel";
-            this.BTN_Cancel.Size = new System.Drawing.Size(100, 28);
-            this.BTN_Cancel.TabIndex = 5;
-            this.BTN_Cancel.TabStop = false;
-            this.BTN_Cancel.Text = "Annuler";
-            this.BTN_Cancel.UseVisualStyleBackColor = true;
-            // 
-            // BTN_Effacer
-            // 
-            this.BTN_Effacer.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BTN_Effacer.Location = new System.Drawing.Point(380, 186);
-            this.BTN_Effacer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.BTN_Effacer.Name = "BTN_Effacer";
-            this.BTN_Effacer.Size = new System.Drawing.Size(99, 28);
-            this.BTN_Effacer.TabIndex = 46;
-            this.BTN_Effacer.Text = "Effacer";
-            this.BTN_Effacer.UseVisualStyleBackColor = true;
-            this.BTN_Effacer.Click += new System.EventHandler(this.BTN_Effacer_Click);
+            this.FB_Ok.BackColor = System.Drawing.Color.Transparent;
+            this.FB_Ok.BackgroundImage = global::Compact_Agenda.Properties.Resources.Ok;
+            this.FB_Ok.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FB_Ok.ImageClick = global::Compact_Agenda.Properties.Resources.Ok_Click;
+            this.FB_Ok.ImageDisable = global::Compact_Agenda.Properties.Resources.Ok_Disable;
+            this.FB_Ok.ImageNeutral = global::Compact_Agenda.Properties.Resources.Ok;
+            this.FB_Ok.ImageOver = global::Compact_Agenda.Properties.Resources.Ok;
+            this.FB_Ok.Location = new System.Drawing.Point(405, 213);
+            this.FB_Ok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FB_Ok.Name = "FB_Ok";
+            this.FB_Ok.Size = new System.Drawing.Size(48, 48);
+            this.FB_Ok.TabIndex = 47;
+            this.FB_Ok.Click += new System.EventHandler(this.FB_Ok_Click);
             // 
             // DLG_Events
             // 
-            this.AcceptButton = this.BTN_Ok;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.BTN_Cancel;
             this.ClientSize = new System.Drawing.Size(497, 265);
-            this.Controls.Add(this.BTN_Effacer);
-            this.Controls.Add(this.BTN_Cancel);
-            this.Controls.Add(this.BTN_Ok);
+            this.Controls.Add(this.FB_Abort);
+            this.Controls.Add(this.FB_Ok);
             this.Controls.Add(this.DTP_Ending);
             this.Controls.Add(this.DTP_Starting);
             this.Controls.Add(this.DTP_Date);
@@ -200,7 +191,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TBX_Title);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DLG_Events";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DLG_Events";
@@ -222,8 +213,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker DTP_Ending;
-        private System.Windows.Forms.Button BTN_Ok;
-        private System.Windows.Forms.Button BTN_Cancel;
-        private System.Windows.Forms.Button BTN_Effacer;
+        private FlashButton.FlashButton FB_Ok;
+        private FlashButton.FlashButton FB_Abort;
     }
 }

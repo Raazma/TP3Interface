@@ -22,6 +22,8 @@ namespace Compact_Agenda
         {
             Starting = DateTime.Now;
             Ending = DateTime.Now;
+            
+            
         }
         public Event(string Id, string Title, string Description, DateTime Starting, DateTime Ending)
         {
@@ -119,6 +121,7 @@ namespace Compact_Agenda
             DC.FillRectangle(new SolidBrush(Color.LightBlue), GetBorder());
             DC.DrawRectangle(new Pen(Color.Black, 1), GetBorder());
             string time = TimeToString(Starting) + "-" + TimeToString(Ending);
+            
 
             int fontSize = 8;
             using (Font font = new Font("Arial", fontSize-1, FontStyle.Regular, GraphicsUnit.Point))

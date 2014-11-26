@@ -26,7 +26,8 @@ namespace Compact_Agenda
 {
     public partial class Form_WeekView : Form
     {
-        public string ConnexionString;
+
+        public string ConnexionString; 
         private DateTime _CurrentWeek;
         private Events Events = new Events();
         private int minInterval = 5;
@@ -51,6 +52,7 @@ namespace Compact_Agenda
             PN_Hours.Height = PN_Content.Height = 2400;
 
         }
+
         private void Form_WeekView_Load(object sender, EventArgs e)
         {
             PN_Scroll.Focus();
@@ -93,7 +95,7 @@ namespace Compact_Agenda
             for (int hour = 0; hour < 24; hour++)
             {
                 DC.DrawLine(pen1, 0, Event.HourToPixel(hour + 1,  0, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour + 1,  0, PN_Hours.Height));
-                DC.DrawLine(pen2, 0, Event.HourToPixel(hour + 1, 30, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour + 1, 30, PN_Hours.Height));
+                DC.DrawLine(pen2, 0, Event.HourToPixel(hour, 30, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour, 30, PN_Hours.Height));
             }
             Point location;
             for (int dayNum = 0; dayNum < 7; dayNum++)
@@ -201,23 +203,27 @@ namespace Compact_Agenda
         }
         private void PN_Content_MouseDown(object sender, MouseEventArgs e)
         {
-            mouseIsDown = true;
-            firstMouseLocation = lastMouseLocation = e.Location;
-            if (Events.TargetEvent != null)
+            if (e.Button == MouseButtons.Left)
             {
-                switch (Events.TargetPart)
+                mouseIsDown = true;
+                firstMouseLocation = lastMouseLocation = e.Location;
+                if (Events.TargetEvent != null)
                 {
-                    case TargetPart.Top:
-                        firstMouseLocation.Y =
-                        lastMouseLocation.Y = RoundToMinutes(Event.HourToPixel(Events.TargetEvent.Starting.Hour, Events.TargetEvent.Starting.Minute, PN_Content.Height), minInterval);
-                        break;
-                    case TargetPart.Bottom:
-                        firstMouseLocation.Y =
-                        lastMouseLocation.Y = RoundToMinutes(Event.HourToPixel(Events.TargetEvent.Ending.Hour, Events.TargetEvent.Ending.Minute, PN_Content.Height), minInterval);
-                        break;
-                    default:  break;
+                    switch (Events.TargetPart)
+                    {
+                        case TargetPart.Top:
+                            firstMouseLocation.Y =
+                            lastMouseLocation.Y = RoundToMinutes(Event.HourToPixel(Events.TargetEvent.Starting.Hour, Events.TargetEvent.Starting.Minute, PN_Content.Height), minInterval);
+                            break;
+                        case TargetPart.Bottom:
+                            firstMouseLocation.Y =
+                            lastMouseLocation.Y = RoundToMinutes(Event.HourToPixel(Events.TargetEvent.Ending.Hour, Events.TargetEvent.Ending.Minute, PN_Content.Height), minInterval);
+                            break;
+                        default:  break;
+                    }
                 }
             }
+            
         }
 
         private void AjustCurrentWeek()
@@ -405,6 +411,7 @@ namespace Compact_Agenda
 
         private void PN_Content_MouseUp(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Left)
             ConludeMouseEvent();
         }
 
@@ -467,6 +474,7 @@ namespace Compact_Agenda
                 }
             }
         }
+
         private void PN_Content_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             switch (e.KeyCode)
@@ -540,6 +548,45 @@ namespace Compact_Agenda
         private void PN_Content_Resize(object sender, EventArgs e)
         {
             AdjustMinInterval();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void PN_Content_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button==MouseButtons.Right)
+            {
+                if (Events.TargetEvent!=null && Events.TargetPart==TargetPart.Inside)
+                {
+                    CM_Event.Show(Cursor.Position);
+                }
+                else if(Events.TargetEvent==null)
+                {
+                    CM_Calendrier.Show(Cursor.Position);
+                }
+                
+            }
+        }
+
+        private void effacerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Voulez vous vraiment effacer cet événement ?") == System.Windows.Forms.DialogResult.OK)
+            {
+                TableEvents tableEvents = new TableEvents(ConnexionString);
+                //Events.UpdateTarget(Cursor.Position);
+                //if (Events.TargetEvent != null && Events.TargetPart == TargetPart.Inside)
+                {
+                    tableEvents.DeleteEvent(Events.TargetEvent);
+                    Events.TargetEvent = null;
+                    GetWeekEvents();
+                    PN_Content.Refresh();
+                }
+                
+                
+            }
         }
     }
 }

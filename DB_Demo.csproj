@@ -155,6 +155,24 @@
       <Name>FlashButton</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1416983390_Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1416983406_Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok_Disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok_Click.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Abort_Click.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Abort_Disable.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

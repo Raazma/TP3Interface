@@ -63,6 +63,36 @@ namespace Compact_Agenda.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Abort {
+            get {
+                object obj = ResourceManager.GetObject("Abort", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Abort_Click {
+            get {
+                object obj = ResourceManager.GetObject("Abort_Click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Abort_Disable {
+            get {
+                object obj = ResourceManager.GetObject("Abort_Disable", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ICON_Left_Click {
             get {
                 object obj = ResourceManager.GetObject("ICON_Left_Click", resourceCulture);
@@ -136,6 +166,36 @@ namespace Compact_Agenda.Properties {
         internal static System.Drawing.Bitmap ICON_Right_Over {
             get {
                 object obj = ResourceManager.GetObject("ICON_Right_Over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ok {
+            get {
+                object obj = ResourceManager.GetObject("Ok", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ok_Click {
+            get {
+                object obj = ResourceManager.GetObject("Ok_Click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ok_Disable {
+            get {
+                object obj = ResourceManager.GetObject("Ok_Disable", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

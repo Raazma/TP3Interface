@@ -62,7 +62,7 @@ namespace Compact_Agenda
         private void TBX_Title_TextChanged(object sender, EventArgs e)
         {
             Event.Title = TBX_Title.Text;
-            BTN_Ok.Enabled = ValidateData_Events();
+            FB_Ok.Enabled = ValidateData_Events();
         }
 
 
@@ -89,7 +89,7 @@ namespace Compact_Agenda
                                             DTP_Ending.Value.Minute,
                                             0);
             }
-            BTN_Ok.Enabled = ValidateData_Events();
+            FB_Ok.Enabled = ValidateData_Events();
         }
 
         private void DTP_Starting_ValueChanged(object sender, EventArgs e)
@@ -103,7 +103,7 @@ namespace Compact_Agenda
                                                  DTP_Starting.Value.Minute,
                                                  0);
             }
-            BTN_Ok.Enabled = ValidateData_Events();
+            FB_Ok.Enabled = ValidateData_Events();
         }
 
         private void DTP_Ending_ValueChanged(object sender, EventArgs e)
@@ -118,17 +118,22 @@ namespace Compact_Agenda
                                             DTP_Ending.Value.Minute,
                                             0);
             }
-            BTN_Ok.Enabled = ValidateData_Events();
+            FB_Ok.Enabled = ValidateData_Events();
         }
 
-        private void BTN_Effacer_Click(object sender, EventArgs e)
+
+        private void FB_Ok_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Voulez vous vraiment effacer cet événement ?") == System.Windows.Forms.DialogResult.OK)
-            {
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                delete = true;
-                this.Close();
-            }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+
+
+        private void FB_Abort_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Abort;
+            this.Close();
         }
     }
 }
