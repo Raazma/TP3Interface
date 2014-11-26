@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Compact_Agenda
+namespace PasswordKeeper
 {
     public class Event
     {
         public string Id { get; set; }
         public string Title { get; set; }
+        public int Event_Type { get; set; }
         public string Description { get; set; }
         private DateTime _start;
         public DateTime Starting { get { return _start; } set { _start = RoundToMinutes(value, 5); } }
@@ -22,24 +23,28 @@ namespace Compact_Agenda
         {
             Starting = DateTime.Now;
             Ending = DateTime.Now;
+            Event_Type = 0;
             
             
         }
-        public Event(string Id, string Title, string Description, DateTime Starting, DateTime Ending)
+        public Event(string Id, string Title, string Description, DateTime Starting, DateTime Ending,int Event_Type=0)
         {
             this.Id = Id;
             this.Title = Title;
             this.Description = Description;;
             this.Starting = Starting;
             this.Ending = Ending;
+            this.Event_Type = Event_Type;
         }
-        public Event(string Id, string Title, string Description, string Starting, string Ending)
+        public Event(string Id, string Title, string Description, string Starting, string Ending,string Event_Type)
         {
             this.Id = Id;
             this.Title = TextFilter.FromSql(Title);
             this.Description = TextFilter.FromSql(Description);
             this.Starting = DateTime.Parse(Starting);
             this.Ending = DateTime.Parse(Ending);
+            if(Event_Type!="")
+                this.Event_Type = int.Parse(Event_Type);
         }
 
         public Event(Event copy)
@@ -50,6 +55,7 @@ namespace Compact_Agenda
             Starting = copy.Starting;
             Ending = copy.Ending;
             ParentPanel = copy.ParentPanel;
+            Event_Type = copy.Event_Type;
         }
         public Event Klone()
         {
@@ -118,7 +124,8 @@ namespace Compact_Agenda
         }
         public void Draw(Graphics DC)
         {
-            DC.FillRectangle(new SolidBrush(Color.LightBlue), GetBorder());
+            ;
+            DC.FillRectangle(new SolidBrush(Color.FromArgb(Int32.Parse( Properties.Settings.Default.Event_Type_Colors[Event_Type].Split(',').ElementAt(0)), Int32.Parse(Properties.Settings.Default.Event_Type_Colors[Event_Type].Split(',').ElementAt(1)), Int32.Parse(Properties.Settings.Default.Event_Type_Colors[Event_Type].Split(',').ElementAt(2)))), GetBorder());
             DC.DrawRectangle(new Pen(Color.Black, 1), GetBorder());
             string time = TimeToString(Starting) + "-" + TimeToString(Ending);
             

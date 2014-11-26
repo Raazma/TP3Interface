@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Compact_Agenda
+namespace PasswordKeeper
 {
     public enum TargetPart { Top, Bottom, Inside, None};
     class Events

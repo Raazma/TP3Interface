@@ -1,4 +1,4 @@
-﻿namespace Compact_Agenda
+﻿namespace PasswordKeeper
 {
     partial class DLG_Events
     {
@@ -41,6 +41,7 @@
             this.FB_Abort = new FlashButton.FlashButton();
             this.FB_Ok = new FlashButton.FlashButton();
             this.CB_Type = new System.Windows.Forms.ComboBox();
+            this.BT_Couleur = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TBX_Title
@@ -145,12 +146,12 @@
             // 
             // FB_Abort
             // 
-            this.FB_Abort.BackgroundImage = global::Compact_Agenda.Properties.Resources.Abort;
+            this.FB_Abort.BackgroundImage = global::PasswordKeeper.Properties.Resources.Abort;
             this.FB_Abort.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FB_Abort.ImageClick = global::Compact_Agenda.Properties.Resources.Abort_Click;
-            this.FB_Abort.ImageDisable = global::Compact_Agenda.Properties.Resources.Abort_Disable;
-            this.FB_Abort.ImageNeutral = global::Compact_Agenda.Properties.Resources.Abort;
-            this.FB_Abort.ImageOver = global::Compact_Agenda.Properties.Resources.Abort;
+            this.FB_Abort.ImageClick = global::PasswordKeeper.Properties.Resources.Abort_Click;
+            this.FB_Abort.ImageDisable = global::PasswordKeeper.Properties.Resources.Abort_Disable;
+            this.FB_Abort.ImageNeutral = global::PasswordKeeper.Properties.Resources.Abort;
+            this.FB_Abort.ImageOver = global::PasswordKeeper.Properties.Resources.Abort;
             this.FB_Abort.Location = new System.Drawing.Point(311, 213);
             this.FB_Abort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FB_Abort.Name = "FB_Abort";
@@ -161,12 +162,12 @@
             // FB_Ok
             // 
             this.FB_Ok.BackColor = System.Drawing.Color.Transparent;
-            this.FB_Ok.BackgroundImage = global::Compact_Agenda.Properties.Resources.Ok;
+            this.FB_Ok.BackgroundImage = global::PasswordKeeper.Properties.Resources.Ok;
             this.FB_Ok.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FB_Ok.ImageClick = global::Compact_Agenda.Properties.Resources.Ok_Click;
-            this.FB_Ok.ImageDisable = global::Compact_Agenda.Properties.Resources.Ok_Disable;
-            this.FB_Ok.ImageNeutral = global::Compact_Agenda.Properties.Resources.Ok;
-            this.FB_Ok.ImageOver = global::Compact_Agenda.Properties.Resources.Ok;
+            this.FB_Ok.ImageClick = global::PasswordKeeper.Properties.Resources.Ok_Click;
+            this.FB_Ok.ImageDisable = global::PasswordKeeper.Properties.Resources.Ok_Disable;
+            this.FB_Ok.ImageNeutral = global::PasswordKeeper.Properties.Resources.Ok;
+            this.FB_Ok.ImageOver = global::PasswordKeeper.Properties.Resources.Ok;
             this.FB_Ok.Location = new System.Drawing.Point(405, 213);
             this.FB_Ok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FB_Ok.Name = "FB_Ok";
@@ -191,11 +192,22 @@
             this.CB_Type.TabIndex = 49;
             this.CB_Type.SelectedIndexChanged += new System.EventHandler(this.CB_Type_SelectedIndexChanged);
             // 
+            // BT_Couleur
+            // 
+            this.BT_Couleur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_Couleur.Location = new System.Drawing.Point(418, 12);
+            this.BT_Couleur.Name = "BT_Couleur";
+            this.BT_Couleur.Size = new System.Drawing.Size(75, 28);
+            this.BT_Couleur.TabIndex = 50;
+            this.BT_Couleur.UseVisualStyleBackColor = true;
+            this.BT_Couleur.Click += new System.EventHandler(this.BT_Couleur_Click);
+            // 
             // DLG_Events
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(497, 265);
+            this.Controls.Add(this.BT_Couleur);
             this.Controls.Add(this.CB_Type);
             this.Controls.Add(this.FB_Abort);
             this.Controls.Add(this.FB_Ok);
@@ -235,5 +247,6 @@
         private FlashButton.FlashButton FB_Ok;
         private FlashButton.FlashButton FB_Abort;
         private System.Windows.Forms.ComboBox CB_Type;
+        private System.Windows.Forms.Button BT_Couleur;
     }
 }

@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Compact_Agenda
+
+namespace PasswordKeeper
 {
     public partial class DLG_Events : Form
     {
@@ -24,7 +25,7 @@ namespace Compact_Agenda
         {
             delete = false;
             EventToDLG();
-            CB_Type.SelectedIndex = 0;
+
         }
 
         public static DateTime Klone(DateTime date)
@@ -43,9 +44,15 @@ namespace Compact_Agenda
                 DTP_Starting.Value = Klone(Event.Starting);
                 DTP_Ending.Value = Klone(Event.Ending);
                 blockUpdate = false;
+                CB_Type.SelectedIndex = Event.Event_Type;
+
             }
             else
+            {
                 Event = new Event();
+                CB_Type.SelectedIndex = 0;
+            }
+                
         }
 
         private bool ValidateData_Events() //F.L.
@@ -125,6 +132,9 @@ namespace Compact_Agenda
 
         private void FB_Ok_Click(object sender, EventArgs e)
         {
+
+            Event.Event_Type = CB_Type.SelectedIndex;
+            Properties.Settings.Default.Save();
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -139,6 +149,18 @@ namespace Compact_Agenda
 
         private void CB_Type_SelectedIndexChanged(object sender, EventArgs e)
         {
+            BT_Couleur.BackColor=Color.FromArgb(Int32.Parse( Properties.Settings.Default.Event_Type_Colors[CB_Type.SelectedIndex].Split(',').ElementAt(0)), Int32.Parse(Properties.Settings.Default.Event_Type_Colors[CB_Type.SelectedIndex].Split(',').ElementAt(1)), Int32.Parse(Properties.Settings.Default.Event_Type_Colors[CB_Type.SelectedIndex].Split(',').ElementAt(2)));
+        }
+
+        private void BT_Couleur_Click(object sender, EventArgs e)
+        {
+            DLG_HLSColorPicker ColorPicker = new DLG_HLSColorPicker();
+            ColorPicker.color = BT_Couleur.BackColor;
+            if(ColorPicker.ShowDialog()==DialogResult.OK)
+            {
+                Properties.Settings.Default.Event_Type_Colors[CB_Type.SelectedIndex]=ColorPicker.color.R.ToString()+","+ColorPicker.color.G.ToString()+","+ColorPicker.color.B.ToString();
+                BT_Couleur.BackColor = Color.FromArgb(Int32.Parse(Properties.Settings.Default.Event_Type_Colors[CB_Type.SelectedIndex].Split(',').ElementAt(0)), Int32.Parse(Properties.Settings.Default.Event_Type_Colors[CB_Type.SelectedIndex].Split(',').ElementAt(1)), Int32.Parse(Properties.Settings.Default.Event_Type_Colors[CB_Type.SelectedIndex].Split(',').ElementAt(2)));
+            }
 
         }
     }

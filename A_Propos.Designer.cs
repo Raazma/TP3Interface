@@ -1,4 +1,4 @@
-﻿namespace Compact_Agenda
+﻿namespace PasswordKeeper
 {
     partial class A_Propos
     {

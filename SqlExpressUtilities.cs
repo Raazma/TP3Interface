@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Windows.Forms;
 
-namespace Compact_Agenda
+namespace PasswordKeeper
 {
 
     public class TextFilter
@@ -216,10 +216,11 @@ namespace Compact_Agenda
 
         public void AddEvent(Event Event)
         {
-            NonQuerySQL("INSERT INTO Events (Title, Description, Starting, Ending) VALUES ('" + TextFilter.PrepareForSql(Event.Title) + "','" +
+            NonQuerySQL("INSERT INTO Events (Title, Description, Starting, Ending, Event_Type) VALUES ('" + TextFilter.PrepareForSql(Event.Title) + "','" +
                                                                                                 TextFilter.PrepareForSql(Event.Description) + "','" +
                                                                                                 DateSQLFormat(Event.Starting) + "','" +
-                                                                                                DateSQLFormat(Event.Ending) + "');");
+                                                                                                DateSQLFormat(Event.Ending) + "','" +
+                                                                                                Event.Event_Type.ToString() + "');");
         }
 
         public Event GetEventByID(string Id)
@@ -235,7 +236,8 @@ namespace Compact_Agenda
                                     this["Title"], 
                                     this["Description"], 
                                     this["Starting"],  
-                                    this["Ending"]);
+                                    this["Ending"],
+                                    this["Event_Type"]);
             }
             else
                 return null;
@@ -250,7 +252,8 @@ namespace Compact_Agenda
                                                 this["Title"],
                                                 this["Description"],
                                                 this["Starting"],
-                                                this["Ending"]);
+                                                this["Ending"],
+                                                this["Event_Type"]);
             }
             return more;
         }
@@ -279,6 +282,7 @@ namespace Compact_Agenda
             fieldsValues[2] = TextFilter.PrepareForSql(Event.Description);
             fieldsValues[3] = DateSQLFormat(Event.Starting);
             fieldsValues[4] = DateSQLFormat(Event.Ending);
+            fieldsValues[5] = Event.Event_Type.ToString();
 
             UpdateRecord("Events");
         }

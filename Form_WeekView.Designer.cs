@@ -1,4 +1,4 @@
-﻿namespace Compact_Agenda
+﻿namespace PasswordKeeper
 {
     partial class Form_WeekView
     {
@@ -36,10 +36,10 @@
             this.ajouterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FBTN_DecrementWeek = new FlashButton.FlashButton();
             this.FBTN_IncrementWeek = new FlashButton.FlashButton();
-            this.PN_Scroll = new Compact_Agenda.DoubleBufferPanel();
-            this.PN_Content = new Compact_Agenda.DoubleBufferPanel();
-            this.PN_Hours = new Compact_Agenda.DoubleBufferPanel();
-            this.PN_DaysHeader = new Compact_Agenda.DoubleBufferPanel();
+            this.PN_Scroll = new PasswordKeeper.DoubleBufferPanel();
+            this.PN_Content = new PasswordKeeper.DoubleBufferPanel();
+            this.PN_Hours = new PasswordKeeper.DoubleBufferPanel();
+            this.PN_DaysHeader = new PasswordKeeper.DoubleBufferPanel();
             this.PN_Frame.SuspendLayout();
             this.CM_Event.SuspendLayout();
             this.CM_Calendrier.SuspendLayout();
@@ -92,12 +92,12 @@
             // 
             // FBTN_DecrementWeek
             // 
-            this.FBTN_DecrementWeek.BackgroundImage = global::Compact_Agenda.Properties.Resources.ICON_Left_Neutral;
+            this.FBTN_DecrementWeek.BackgroundImage = global::PasswordKeeper.Properties.Resources.ICON_Left_Neutral;
             this.FBTN_DecrementWeek.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FBTN_DecrementWeek.ImageClick = global::Compact_Agenda.Properties.Resources.ICON_Left_Neutral;
-            this.FBTN_DecrementWeek.ImageDisable = global::Compact_Agenda.Properties.Resources.ICON_Left_Disable;
-            this.FBTN_DecrementWeek.ImageNeutral = global::Compact_Agenda.Properties.Resources.ICON_Left_Neutral;
-            this.FBTN_DecrementWeek.ImageOver = global::Compact_Agenda.Properties.Resources.ICON_Left_Over;
+            this.FBTN_DecrementWeek.ImageClick = global::PasswordKeeper.Properties.Resources.ICON_Left_Neutral;
+            this.FBTN_DecrementWeek.ImageDisable = global::PasswordKeeper.Properties.Resources.ICON_Left_Disable;
+            this.FBTN_DecrementWeek.ImageNeutral = global::PasswordKeeper.Properties.Resources.ICON_Left_Neutral;
+            this.FBTN_DecrementWeek.ImageOver = global::PasswordKeeper.Properties.Resources.ICON_Left_Over;
             this.FBTN_DecrementWeek.Location = new System.Drawing.Point(4, 2);
             this.FBTN_DecrementWeek.Margin = new System.Windows.Forms.Padding(5);
             this.FBTN_DecrementWeek.Name = "FBTN_DecrementWeek";
@@ -108,12 +108,12 @@
             // FBTN_IncrementWeek
             // 
             this.FBTN_IncrementWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FBTN_IncrementWeek.BackgroundImage = global::Compact_Agenda.Properties.Resources.ICON_Right_Neutral;
+            this.FBTN_IncrementWeek.BackgroundImage = global::PasswordKeeper.Properties.Resources.ICON_Right_Neutral;
             this.FBTN_IncrementWeek.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FBTN_IncrementWeek.ImageClick = global::Compact_Agenda.Properties.Resources.ICON_Right_Click;
-            this.FBTN_IncrementWeek.ImageDisable = global::Compact_Agenda.Properties.Resources.ICON_Right_Disable;
-            this.FBTN_IncrementWeek.ImageNeutral = global::Compact_Agenda.Properties.Resources.ICON_Right_Neutral;
-            this.FBTN_IncrementWeek.ImageOver = global::Compact_Agenda.Properties.Resources.ICON_Right_Over;
+            this.FBTN_IncrementWeek.ImageClick = global::PasswordKeeper.Properties.Resources.ICON_Right_Click;
+            this.FBTN_IncrementWeek.ImageDisable = global::PasswordKeeper.Properties.Resources.ICON_Right_Disable;
+            this.FBTN_IncrementWeek.ImageNeutral = global::PasswordKeeper.Properties.Resources.ICON_Right_Neutral;
+            this.FBTN_IncrementWeek.ImageOver = global::PasswordKeeper.Properties.Resources.ICON_Right_Over;
             this.FBTN_IncrementWeek.Location = new System.Drawing.Point(944, 2);
             this.FBTN_IncrementWeek.Margin = new System.Windows.Forms.Padding(5);
             this.FBTN_IncrementWeek.Name = "FBTN_IncrementWeek";

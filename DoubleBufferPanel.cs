@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Compact_Agenda
+namespace PasswordKeeper
 {
     public class DoubleBufferPanel : System.Windows.Forms.Panel
     {

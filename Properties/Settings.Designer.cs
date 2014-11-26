@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Compact_Agenda.Properties {
+namespace PasswordKeeper.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -48,9 +48,18 @@ namespace Compact_Agenda.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.ArrayList Event_Type_Colors {
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>0,0,255</string>
+  <string>255,153,0</string>
+  <string>128,0,128</string>
+  <string>230, 248, 243</string>
+  <string>255,0,0</string>
+  <string>218,165,32</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection Event_Type_Colors {
             get {
-                return ((global::System.Collections.ArrayList)(this["Event_Type_Colors"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Event_Type_Colors"]));
             }
             set {
                 this["Event_Type_Colors"] = value;

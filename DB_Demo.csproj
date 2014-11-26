@@ -7,7 +7,7 @@
     <ProjectGuid>{1BCD7253-4427-4371-A635-CD9F4CCC58D9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Compact_Agenda</RootNamespace>
+    <RootNamespace>PasswordKeeper</RootNamespace>
     <AssemblyName>DB_Demo</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -71,6 +71,12 @@
     <Compile Include="DLG_Events.Designer.cs">
       <DependentUpon>DLG_Events.cs</DependentUpon>
     </Compile>
+    <Compile Include="DLG_HLSColorPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DLG_HLSColorPicker.Designer.cs">
+      <DependentUpon>DLG_HLSColorPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="DoubleBufferPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -82,6 +88,7 @@
     <Compile Include="Form_WeekView.Designer.cs">
       <DependentUpon>Form_WeekView.cs</DependentUpon>
     </Compile>
+    <Compile Include="HLSColor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlExpressUtilities.cs" />
