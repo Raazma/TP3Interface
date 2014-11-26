@@ -57,6 +57,7 @@ namespace Compact_Agenda
         {
             PN_Scroll.Focus();
             GotoCurrentWeek();
+            //Properties.Settings.Default.Event_Type_Colors.Add(Color.)
         }
 
         private void PN_Scroll_MouseEnter(Object sender, EventArgs e)

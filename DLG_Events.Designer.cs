@@ -40,6 +40,7 @@
             this.DTP_Ending = new System.Windows.Forms.DateTimePicker();
             this.FB_Abort = new FlashButton.FlashButton();
             this.FB_Ok = new FlashButton.FlashButton();
+            this.CB_Type = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // TBX_Title
@@ -173,11 +174,29 @@
             this.FB_Ok.TabIndex = 47;
             this.FB_Ok.Click += new System.EventHandler(this.FB_Ok_Click);
             // 
+            // CB_Type
+            // 
+            this.CB_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Type.FormattingEnabled = true;
+            this.CB_Type.Items.AddRange(new object[] {
+            "Général",
+            "Travail",
+            "Loisir",
+            "Santé",
+            "Important",
+            "Autre"});
+            this.CB_Type.Location = new System.Drawing.Point(291, 15);
+            this.CB_Type.Name = "CB_Type";
+            this.CB_Type.Size = new System.Drawing.Size(121, 24);
+            this.CB_Type.TabIndex = 49;
+            this.CB_Type.SelectedIndexChanged += new System.EventHandler(this.CB_Type_SelectedIndexChanged);
+            // 
             // DLG_Events
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(497, 265);
+            this.Controls.Add(this.CB_Type);
             this.Controls.Add(this.FB_Abort);
             this.Controls.Add(this.FB_Ok);
             this.Controls.Add(this.DTP_Ending);
@@ -215,5 +234,6 @@
         private System.Windows.Forms.DateTimePicker DTP_Ending;
         private FlashButton.FlashButton FB_Ok;
         private FlashButton.FlashButton FB_Abort;
+        private System.Windows.Forms.ComboBox CB_Type;
     }
 }

@@ -24,6 +24,7 @@ namespace Compact_Agenda
         {
             delete = false;
             EventToDLG();
+            CB_Type.SelectedIndex = 0;
         }
 
         public static DateTime Klone(DateTime date)
@@ -134,6 +135,11 @@ namespace Compact_Agenda
         {
             this.DialogResult = DialogResult.Abort;
             this.Close();
+        }
+
+        private void CB_Type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

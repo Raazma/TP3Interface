@@ -45,5 +45,16 @@ namespace Compact_Agenda.Properties {
                 this["Colors"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.ArrayList Event_Type_Colors {
+            get {
+                return ((global::System.Collections.ArrayList)(this["Event_Type_Colors"]));
+            }
+            set {
+                this["Event_Type_Colors"] = value;
+            }
+        }
     }
 }
