@@ -647,5 +647,30 @@ namespace PasswordKeeper
         {
             this.Text = "Agenda compacte - " + DateTime.Now.ToString();
         }
+
+        private void PN_Hours_MouseHover(object sender, EventArgs e)
+        {
+            UCS_Zoom.Visible = true;
+            UCS_Zoom.Enabled = true;
+            UCS_Zoom.BackColor = Color.LightGray;
+            UCS_Zoom.BringToFront();
+            Point Po = new Point((PN_Hours.Location.X + PN_Hours.Width/2 - UCS_Zoom.Width / 2), (this.PointToClient( Cursor.Position).Y - (UCS_Zoom.Height / 2)));          
+            UCS_Zoom.Location = Po;
+                
+            
+            
+        }
+
+        private void UCS_Zoom_MouseLeave(object sender, EventArgs e)
+        {
+            UCS_Zoom.Visible = false;
+            UCS_Zoom.Enabled = false;
+            UCS_Zoom.SendToBack();
+        }
+
+        private void UCS_Zoom_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
     }
 }

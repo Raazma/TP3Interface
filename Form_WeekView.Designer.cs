@@ -38,9 +38,9 @@
             this.CM_Calendrier = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ajouterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.T_Titre = new System.Windows.Forms.Timer(this.components);
+            this.UCS_Zoom = new UC_Slider.UC_Slider();
             this.PN_Scroll = new PasswordKeeper.DoubleBufferPanel();
             this.PN_Content = new PasswordKeeper.DoubleBufferPanel();
-            this.uC_Slider1 = new UC_Slider.UC_Slider();
             this.PN_Hours = new PasswordKeeper.DoubleBufferPanel();
             this.PN_DaysHeader = new PasswordKeeper.DoubleBufferPanel();
             this.PN_Frame.SuspendLayout();
@@ -55,7 +55,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PN_Frame.BackColor = System.Drawing.Color.Orange;
-            this.PN_Frame.Controls.Add(this.uC_Slider1);
+            this.PN_Frame.Controls.Add(this.UCS_Zoom);
             this.PN_Frame.Controls.Add(this.PN_Scroll);
             this.PN_Frame.Controls.Add(this.FBTN_DecrementWeek);
             this.PN_Frame.Controls.Add(this.FBTN_IncrementWeek);
@@ -65,6 +65,7 @@
             this.PN_Frame.Name = "PN_Frame";
             this.PN_Frame.Size = new System.Drawing.Size(991, 725);
             this.PN_Frame.TabIndex = 4;
+            this.PN_Frame.MouseEnter += new System.EventHandler(this.UCS_Zoom_MouseLeave);
             // 
             // FBTN_DecrementWeek
             // 
@@ -80,6 +81,7 @@
             this.FBTN_DecrementWeek.Size = new System.Drawing.Size(43, 39);
             this.FBTN_DecrementWeek.TabIndex = 2;
             this.FBTN_DecrementWeek.Click += new System.EventHandler(this.FBTN_DecrementWeek_Click);
+            this.FBTN_DecrementWeek.MouseEnter += new System.EventHandler(this.UCS_Zoom_MouseLeave);
             // 
             // FBTN_IncrementWeek
             // 
@@ -132,6 +134,26 @@
             this.T_Titre.Interval = 500;
             this.T_Titre.Tick += new System.EventHandler(this.T_Titre_Tick);
             // 
+            // UCS_Zoom
+            // 
+            this.UCS_Zoom.BackColor = System.Drawing.Color.Transparent;
+            this.UCS_Zoom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.UCS_Zoom.BarDisableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.BarDisableImage")));
+            this.UCS_Zoom.BarEnableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.BarEnableImage")));
+            this.UCS_Zoom.CursorDisableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.CursorDisableImage")));
+            this.UCS_Zoom.CursorEnableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.CursorEnableImage")));
+            this.UCS_Zoom.CursorOverImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.CursorOverImage")));
+            this.UCS_Zoom.Location = new System.Drawing.Point(0, -46);
+            this.UCS_Zoom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UCS_Zoom.Maximum = 100;
+            this.UCS_Zoom.Minimum = -100;
+            this.UCS_Zoom.Name = "UCS_Zoom";
+            this.UCS_Zoom.Size = new System.Drawing.Size(24, 246);
+            this.UCS_Zoom.TabIndex = 0;
+            this.UCS_Zoom.Value = 0;
+            this.UCS_Zoom.Scroll += new System.Windows.Forms.ScrollEventHandler(this.UCS_Zoom_Scroll);
+            this.UCS_Zoom.MouseLeave += new System.EventHandler(this.UCS_Zoom_MouseLeave);
+            // 
             // PN_Scroll
             // 
             this.PN_Scroll.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -161,27 +183,10 @@
             this.PN_Content.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseClick);
             this.PN_Content.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseDoubleClick);
             this.PN_Content.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseDown);
-            this.PN_Content.MouseEnter += new System.EventHandler(this.PN_Scroll_MouseEnter);
+            this.PN_Content.MouseEnter += new System.EventHandler(this.UCS_Zoom_MouseLeave);
             this.PN_Content.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseMove);
             this.PN_Content.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseUp);
             this.PN_Content.Resize += new System.EventHandler(this.PN_Content_Resize);
-            // 
-            // uC_Slider1
-            // 
-            this.uC_Slider1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.uC_Slider1.BarDisableImage = ((System.Drawing.Image)(resources.GetObject("uC_Slider1.BarDisableImage")));
-            this.uC_Slider1.BarEnableImage = ((System.Drawing.Image)(resources.GetObject("uC_Slider1.BarEnableImage")));
-            this.uC_Slider1.CursorDisableImage = ((System.Drawing.Image)(resources.GetObject("uC_Slider1.CursorDisableImage")));
-            this.uC_Slider1.CursorEnableImage = ((System.Drawing.Image)(resources.GetObject("uC_Slider1.CursorEnableImage")));
-            this.uC_Slider1.CursorOverImage = ((System.Drawing.Image)(resources.GetObject("uC_Slider1.CursorOverImage")));
-            this.uC_Slider1.Location = new System.Drawing.Point(0, -46);
-            this.uC_Slider1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.uC_Slider1.Maximum = 100;
-            this.uC_Slider1.Minimum = -100;
-            this.uC_Slider1.Name = "uC_Slider1";
-            this.uC_Slider1.Size = new System.Drawing.Size(24, 246);
-            this.uC_Slider1.TabIndex = 0;
-            this.uC_Slider1.Value = 0;
             // 
             // PN_Hours
             // 
@@ -192,6 +197,7 @@
             this.PN_Hours.Size = new System.Drawing.Size(48, 638);
             this.PN_Hours.TabIndex = 1;
             this.PN_Hours.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Hours_Paint);
+            this.PN_Hours.MouseHover += new System.EventHandler(this.PN_Hours_MouseHover);
             // 
             // PN_DaysHeader
             // 
@@ -202,6 +208,7 @@
             this.PN_DaysHeader.Size = new System.Drawing.Size(837, 39);
             this.PN_DaysHeader.TabIndex = 0;
             this.PN_DaysHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_DaysHeader_Paint);
+            this.PN_DaysHeader.MouseEnter += new System.EventHandler(this.UCS_Zoom_MouseLeave);
             // 
             // Form_WeekView
             // 
@@ -239,7 +246,7 @@
         private System.Windows.Forms.ContextMenuStrip CM_Calendrier;
         private System.Windows.Forms.ToolStripMenuItem ajouterToolStripMenuItem;
         private System.Windows.Forms.Timer T_Titre;
-        private UC_Slider.UC_Slider uC_Slider1;
+        private UC_Slider.UC_Slider UCS_Zoom;
 
 
     }
