@@ -58,20 +58,8 @@ namespace PasswordKeeper
         {
             PN_Scroll.Focus();
             GotoCurrentWeek();
-            //Properties.Settings.Default.Event_Type_Colors = new System.Collections.ArrayList();
-            //Properties.Settings.Default.Event_Type_Colors.Add(Color.Blue);
-            //Properties.Settings.Default.Event_Type_Colors.Add(Color.Orange);
-            //Properties.Settings.Default.Event_Type_Colors.Add(Color.Purple);
-            //Properties.Settings.Default.Event_Type_Colors.Add(Color.Green);
-            //Properties.Settings.Default.Event_Type_Colors.Add(Color.Red);
-            //Properties.Settings.Default.Event_Type_Colors.Add(Color.Goldenrod);
-            //Properties.Settings.Default.Save();
-//            Général
-//Travail
-//Loisir
-//Santé
-//Important
-//Autre
+            T_Titre.Enabled = true;
+            this.Text = "Agenda compacte - " + DateTime.Now.ToString();
         }
 
         private void PN_Scroll_MouseEnter(Object sender, EventArgs e)
@@ -632,6 +620,11 @@ namespace PasswordKeeper
         private void PN_Scroll_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void T_Titre_Tick(object sender, EventArgs e)
+        {
+            this.Text = "Agenda compacte - " + DateTime.Now.ToString();
         }
     }
 }
