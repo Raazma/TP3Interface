@@ -113,12 +113,12 @@
             this.CM_Calendrier.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ajouterToolStripMenuItem});
             this.CM_Calendrier.Name = "CM_Calendrier";
-            this.CM_Calendrier.Size = new System.Drawing.Size(153, 48);
+            this.CM_Calendrier.Size = new System.Drawing.Size(114, 26);
             // 
             // ajouterToolStripMenuItem
             // 
             this.ajouterToolStripMenuItem.Name = "ajouterToolStripMenuItem";
-            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.ajouterToolStripMenuItem.Text = "Ajouter";
             this.ajouterToolStripMenuItem.Click += new System.EventHandler(this.ajouterToolStripMenuItem_Click);
             // 
@@ -137,6 +137,7 @@
             this.PN_Scroll.Size = new System.Drawing.Size(737, 552);
             this.PN_Scroll.TabIndex = 1;
             this.PN_Scroll.Scroll += new System.Windows.Forms.ScrollEventHandler(this.PN_Scroll_Scroll);
+            this.PN_Scroll.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Scroll_Paint);
             this.PN_Scroll.Resize += new System.EventHandler(this.PN_Scroll_Resize);
             // 
             // PN_Content

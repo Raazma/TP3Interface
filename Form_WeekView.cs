@@ -628,5 +628,10 @@ namespace PasswordKeeper
                 }
             
         }
+
+        private void PN_Scroll_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
