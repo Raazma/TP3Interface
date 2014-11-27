@@ -146,12 +146,12 @@
             this.UCS_Zoom.Location = new System.Drawing.Point(0, -46);
             this.UCS_Zoom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.UCS_Zoom.Maximum = 100;
-            this.UCS_Zoom.Minimum = -100;
+            this.UCS_Zoom.Minimum = 0;
             this.UCS_Zoom.Name = "UCS_Zoom";
             this.UCS_Zoom.Size = new System.Drawing.Size(24, 246);
             this.UCS_Zoom.TabIndex = 0;
-            this.UCS_Zoom.Value = 0;
-            this.UCS_Zoom.Scroll += new System.Windows.Forms.ScrollEventHandler(this.UCS_Zoom_Scroll);
+            this.UCS_Zoom.Value = 50;
+            this.UCS_Zoom.ValueChanged += new UC_Slider.UC_Slider.ValueChangedHandler(this.UCS_Zoom_ValueChanged);
             this.UCS_Zoom.MouseLeave += new System.EventHandler(this.UCS_Zoom_MouseLeave);
             // 
             // PN_Scroll
