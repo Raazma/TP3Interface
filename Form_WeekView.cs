@@ -606,7 +606,8 @@ namespace PasswordKeeper
             }
         }
 
-        private void effacerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void efface+-+-+-+
+        -+-+--+-+-+-+-+-+-++-+-+-+--+-+-+-+-+-+-+-+++-+-+-+-+-+-+-+-+-+-------------------------------------------------rToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Voulez vous vraiment effacer cet événement ?") == System.Windows.Forms.DialogResult.OK)
             {
