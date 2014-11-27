@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UC_Slider;
 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //  Agenda Compacte:
@@ -654,7 +655,7 @@ namespace PasswordKeeper
             UCS_Zoom.Enabled = true;
             UCS_Zoom.BackColor = Color.LightGray;
             UCS_Zoom.BringToFront();
-            Point Po = new Point((PN_Hours.Location.X + PN_Hours.Width/2 - UCS_Zoom.Width / 2), (this.PointToClient( Cursor.Position).Y - (UCS_Zoom.Height / 2)));          
+            Point Po = new Point((PN_Hours.Location.X + PN_Hours.Width / 2 - UCS_Zoom.Width / 2), ((this.PointToClient(Cursor.Position).Y - (UCS_Zoom.Height / 2)) > PN_Scroll.Location.Y) ? ((this.PointToClient(Cursor.Position).Y - (UCS_Zoom.Height / 2)) + UCS_Zoom.Height < PN_Scroll.Location.Y + PN_Scroll.Height) ? (this.PointToClient(Cursor.Position).Y - (UCS_Zoom.Height / 2)) : PN_Scroll.Location.Y + PN_Scroll.Height-UCS_Zoom.Height : PN_Scroll.Location.Y);          
             UCS_Zoom.Location = Po;
                 
             
@@ -667,10 +668,30 @@ namespace PasswordKeeper
             UCS_Zoom.Enabled = false;
             UCS_Zoom.SendToBack();
         }
-
-        private void UCS_Zoom_Scroll(object sender, ScrollEventArgs e)
+        private int PreValue = 50;
+        private void UCS_Zoom_ValueChanged(object sender, EventArgs e)
         {
-
+            if (PreValue > UCS_Zoom.Value)
+            {
+                if (PN_Content.Height > (PN_Frame.Height))
+                {
+                    PN_Content.Height = (int)(PN_Scroll.Height + (PN_Frame.Height * 12 - PN_Scroll.Height) * ((float)UCS_Zoom.Value / 100));
+                    PN_Hours.Height = (int)(PN_Scroll.Height + (PN_Frame.Height * 12 - PN_Scroll.Height) * ((float)UCS_Zoom.Value / 100));
+                    PN_Content.Refresh();
+                    PN_Hours.Refresh();
+                }
+            }
+            else if (PreValue<UCS_Zoom.Value)
+            {
+                if (PN_Content.Height < PN_Frame.Height * 12)
+                {
+                    PN_Content.Height = (int)(PN_Scroll.Height + (PN_Frame.Height * 12 - PN_Scroll.Height) * ((float)UCS_Zoom.Value / 100));
+                    PN_Hours.Height = (int)(PN_Scroll.Height + (PN_Frame.Height * 12 - PN_Scroll.Height) * ((float)UCS_Zoom.Value / 100));
+                    PN_Content.Refresh();
+                    PN_Hours.Refresh();
+                }
+            }
+            PreValue = UCS_Zoom.Value;
         }
     }
 }
