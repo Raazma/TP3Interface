@@ -512,6 +512,7 @@ namespace PasswordKeeper
                 case Keys.Left:
                     //action
                     break;
+                
             }
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -560,6 +561,16 @@ namespace PasswordKeeper
                 case Keys.Space :
                    if (!mouseIsDown)
                        GotoCurrentWeek();
+                   break;
+                case Keys.F1:
+                   A_Propos form = new A_Propos();
+                   //this.Hide();
+                   form.ShowDialog();                  
+                  // this.Show();
+                   break;
+
+                case  Keys.Q | Keys.Alt:
+                   this.Close();
                    break;
             }
 
