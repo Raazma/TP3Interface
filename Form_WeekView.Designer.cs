@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_WeekView));
             this.PN_Frame = new System.Windows.Forms.Panel();
             this.FBTN_DecrementWeek = new FlashButton.FlashButton();
             this.FBTN_IncrementWeek = new FlashButton.FlashButton();
@@ -39,6 +40,7 @@
             this.T_Titre = new System.Windows.Forms.Timer(this.components);
             this.PN_Scroll = new PasswordKeeper.DoubleBufferPanel();
             this.PN_Content = new PasswordKeeper.DoubleBufferPanel();
+            this.uC_Slider1 = new UC_Slider.UC_Slider();
             this.PN_Hours = new PasswordKeeper.DoubleBufferPanel();
             this.PN_DaysHeader = new PasswordKeeper.DoubleBufferPanel();
             this.PN_Frame.SuspendLayout();
@@ -52,13 +54,14 @@
             this.PN_Frame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PN_Frame.BackColor = System.Drawing.Color.DarkGreen;
+            this.PN_Frame.BackColor = System.Drawing.Color.Orange;
+            this.PN_Frame.Controls.Add(this.uC_Slider1);
             this.PN_Frame.Controls.Add(this.PN_Scroll);
             this.PN_Frame.Controls.Add(this.FBTN_DecrementWeek);
             this.PN_Frame.Controls.Add(this.FBTN_IncrementWeek);
             this.PN_Frame.Controls.Add(this.PN_DaysHeader);
             this.PN_Frame.Location = new System.Drawing.Point(0, 0);
-            this.PN_Frame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PN_Frame.Margin = new System.Windows.Forms.Padding(4);
             this.PN_Frame.Name = "PN_Frame";
             this.PN_Frame.Size = new System.Drawing.Size(991, 725);
             this.PN_Frame.TabIndex = 4;
@@ -72,7 +75,7 @@
             this.FBTN_DecrementWeek.ImageNeutral = global::PasswordKeeper.Properties.Resources.ICON_Left_Neutral;
             this.FBTN_DecrementWeek.ImageOver = global::PasswordKeeper.Properties.Resources.ICON_Left_Over;
             this.FBTN_DecrementWeek.Location = new System.Drawing.Point(4, 2);
-            this.FBTN_DecrementWeek.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.FBTN_DecrementWeek.Margin = new System.Windows.Forms.Padding(5);
             this.FBTN_DecrementWeek.Name = "FBTN_DecrementWeek";
             this.FBTN_DecrementWeek.Size = new System.Drawing.Size(43, 39);
             this.FBTN_DecrementWeek.TabIndex = 2;
@@ -89,7 +92,7 @@
             this.FBTN_IncrementWeek.ImageNeutral = global::PasswordKeeper.Properties.Resources.ICON_Right_Neutral;
             this.FBTN_IncrementWeek.ImageOver = global::PasswordKeeper.Properties.Resources.ICON_Right_Over;
             this.FBTN_IncrementWeek.Location = new System.Drawing.Point(944, 2);
-            this.FBTN_IncrementWeek.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.FBTN_IncrementWeek.Margin = new System.Windows.Forms.Padding(5);
             this.FBTN_IncrementWeek.Name = "FBTN_IncrementWeek";
             this.FBTN_IncrementWeek.Size = new System.Drawing.Size(43, 39);
             this.FBTN_IncrementWeek.TabIndex = 3;
@@ -163,9 +166,26 @@
             this.PN_Content.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseUp);
             this.PN_Content.Resize += new System.EventHandler(this.PN_Content_Resize);
             // 
+            // uC_Slider1
+            // 
+            this.uC_Slider1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.uC_Slider1.BarDisableImage = ((System.Drawing.Image)(resources.GetObject("uC_Slider1.BarDisableImage")));
+            this.uC_Slider1.BarEnableImage = ((System.Drawing.Image)(resources.GetObject("uC_Slider1.BarEnableImage")));
+            this.uC_Slider1.CursorDisableImage = ((System.Drawing.Image)(resources.GetObject("uC_Slider1.CursorDisableImage")));
+            this.uC_Slider1.CursorEnableImage = ((System.Drawing.Image)(resources.GetObject("uC_Slider1.CursorEnableImage")));
+            this.uC_Slider1.CursorOverImage = ((System.Drawing.Image)(resources.GetObject("uC_Slider1.CursorOverImage")));
+            this.uC_Slider1.Location = new System.Drawing.Point(0, -46);
+            this.uC_Slider1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.uC_Slider1.Maximum = 100;
+            this.uC_Slider1.Minimum = -100;
+            this.uC_Slider1.Name = "uC_Slider1";
+            this.uC_Slider1.Size = new System.Drawing.Size(24, 246);
+            this.uC_Slider1.TabIndex = 0;
+            this.uC_Slider1.Value = 0;
+            // 
             // PN_Hours
             // 
-            this.PN_Hours.BackColor = System.Drawing.Color.GreenYellow;
+            this.PN_Hours.BackColor = System.Drawing.Color.LightGray;
             this.PN_Hours.Location = new System.Drawing.Point(0, 0);
             this.PN_Hours.Margin = new System.Windows.Forms.Padding(4);
             this.PN_Hours.Name = "PN_Hours";
@@ -175,7 +195,7 @@
             // 
             // PN_DaysHeader
             // 
-            this.PN_DaysHeader.BackColor = System.Drawing.Color.GreenYellow;
+            this.PN_DaysHeader.BackColor = System.Drawing.Color.Orange;
             this.PN_DaysHeader.Location = new System.Drawing.Point(52, 2);
             this.PN_DaysHeader.Margin = new System.Windows.Forms.Padding(0);
             this.PN_DaysHeader.Name = "PN_DaysHeader";
@@ -192,7 +212,7 @@
             this.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(794, 605);
             this.Name = "Form_WeekView";
             this.Text = "Agenda compacte...";
@@ -219,6 +239,8 @@
         private System.Windows.Forms.ContextMenuStrip CM_Calendrier;
         private System.Windows.Forms.ToolStripMenuItem ajouterToolStripMenuItem;
         private System.Windows.Forms.Timer T_Titre;
+        private UC_Slider.UC_Slider uC_Slider1;
+
 
     }
 }

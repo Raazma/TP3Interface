@@ -47,6 +47,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BitmapUtilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>UC_Slider\BitmapUtilities.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -169,6 +173,10 @@
     <ProjectReference Include="FlashButton\FlashButton.csproj">
       <Project>{40c1d7bc-d569-43af-8c32-b0612d862f58}</Project>
       <Name>FlashButton</Name>
+    </ProjectReference>
+    <ProjectReference Include="UC_Slider\UC_Slider.csproj">
+      <Project>{e0a30330-5af5-4622-95a2-3623e4d20371}</Project>
+      <Name>UC_Slider</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

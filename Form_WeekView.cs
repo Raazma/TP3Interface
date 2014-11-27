@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UC_Slider;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -122,11 +123,21 @@ namespace PasswordKeeper
             Point location;
             DateTime date = _CurrentWeek;
             string[] dayNames = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.DayNames;//[col].Substring(0, 3).ToUpper();
-            Brush brush = new SolidBrush(Color.DarkGreen);
-            Pen pen = new Pen(Color.LightGray, 1);
-            for (int dayNum = 0; dayNum < 7; dayNum++) 
+            Brush brush = new SolidBrush(Color.Snow);
+            Pen pen = new Pen(Color.Snow, 1);
+            for (int dayNum = 0; dayNum < 7; dayNum++)
             {
+                
                 location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * dayNum), 0);
+                if (DateTime.Parse(date.Date.ToShortDateString()) == DateTime.Parse(DateTime.Now.Date.ToShortDateString()))
+                {
+                    Rectangle border = new Rectangle(location.X,location.Y,(int)Math.Round(PN_DaysHeader.Width / 7f * (dayNum+1))-location.X,PN_DaysHeader.Height);
+                    using (Brush B = new SolidBrush(Color.DarkOrange))
+                    {
+                        DC.FillRectangle(B, border);
+                    }
+                    
+                }
                 String headerText = dayNames[dayNum];
                 String headerDate = date.ToShortDateString();
                 DC.DrawLine(pen, location.X, 0, location.X, PN_DaysHeader.Height);
@@ -134,17 +145,27 @@ namespace PasswordKeeper
                 DC.DrawString(headerDate, PN_DaysHeader.Font, brush, location.X, location.Y + 14);
                 date = date.AddDays(1);
             }
-            location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * 7), 0); 
-            DC.DrawLine(pen, location.X-1, 0, location.X-1, PN_DaysHeader.Height);
+            location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * 7), 0);
+            DC.DrawLine(pen, location.X - 1, 0, location.X - 1, PN_DaysHeader.Height);
         }
 
         private void Fill_Hours_Header(Graphics DC)
         {
-            Brush brush = new SolidBrush(Color.DarkGreen);
-            Pen pen = new Pen(Color.LightGray, 1);
+            Brush brush = new SolidBrush(Color.Black);
+            Pen pen = new Pen(Color.Black, 1);
             for (int hour = 0; hour <= 24; hour++)
             {
+               
                 Point location = new Point(0, Event.HourToPixel(hour, 0, PN_Hours.Height));
+                if(DateTime.Now.Hour==hour)
+                {
+                    Rectangle border = new Rectangle(location.X, location.Y, PN_Hours.Width, Event.HourToPixel(hour + 1, 0, PN_Hours.Height) - location.Y);
+                    
+                    using (Brush B = new SolidBrush(Color.DimGray))
+                    {
+                        DC.FillRectangle(B, border);
+                    }
+                }
                 String headerText = (hour < 10? "0": "") + hour.ToString() + ":00";
                 DC.DrawString(headerText, PN_DaysHeader.Font, brush, location); 
                 DC.DrawLine(pen, 0,Event.HourToPixel(hour + 1, 0, PN_Hours.Height), PN_Hours.Width, Event.HourToPixel(hour + 1, 0, PN_Hours.Height));
