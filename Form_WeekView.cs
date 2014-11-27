@@ -519,18 +519,19 @@ namespace PasswordKeeper
         {
             switch (keyData)
             {
-                case Keys.Down: // Incrémenter d'un mois la semaine courrante
+                case Keys.OemMinus: // Incrémenter d'un mois la semaine courrante
 
                     // Fonction temporaire pour voir comment dézommer
                     if (!mouseIsDown)
                     {
-                        if (PN_Content.Height > (PN_Frame.Height))
-                        {
-                            PN_Content.Height -= 200;
-                            PN_Hours.Height -= 200;
-                            PN_Content.Refresh();
-                            PN_Hours.Refresh();
-                        }
+                    //    if (PN_Content.Height > (PN_Frame.Height))
+                    //    {
+                    //        PN_Content.Height -= 200;
+                    //        PN_Hours.Height -= 200;
+                    //        PN_Content.Refresh();
+                    //        PN_Hours.Refresh();
+                    //    }
+                        UCS_Zoom.Value-=2;
                     }
                     break;
                 case Keys.Right: // Incrémenter d'une semaine la semaine courrante
@@ -538,24 +539,24 @@ namespace PasswordKeeper
                         Increment_Week();
                    
                    break;
-                case Keys.Up: // Décrémenter d'un mois la semaine courrante
+                case Keys.Oemplus: // Décrémenter d'un mois la semaine courrante
 
                     // Fonction temporaire pour voir comment zommer
                    if (!mouseIsDown)
                    {
-                       if (PN_Content.Height < PN_Frame.Height *12)
-                       {
-                           PN_Content.Height += 200;
-                           PN_Hours.Height += 200;
-                           PN_Content.Refresh();
-                           PN_Hours.Refresh();
-                       }
+                       //if (PN_Content.Height < PN_Frame.Height *12)
+                       //{
+                       //    PN_Content.Height += 200;
+                       //    PN_Hours.Height += 200;
+                       //    PN_Content.Refresh();
+                       //    PN_Hours.Refresh();
+                       //}
+                       UCS_Zoom.Value+=2;
                    }
                    break;
                 case Keys.Left:// Décrémenter d'une semaine la semaine courrante
                    if (!mouseIsDown)
-                       Decrement_Week();
-                   
+                       Decrement_Week();                 
                    break;
 
                 case Keys.Space :
@@ -572,6 +573,16 @@ namespace PasswordKeeper
                 case  Keys.Q | Keys.Alt:
                    this.Close();
                    break;
+
+                case Keys.Up :
+                   IncrementMonth();
+                     break;
+                case Keys.Down:
+                     DecrementMonth();
+                     break;
+
+                     string[] tab;
+                     tab = tab.Where(val => val != "Allo").ToArray();
             }
 
             
@@ -580,7 +591,22 @@ namespace PasswordKeeper
             PN_Scroll.Focus();
             return result;
         }
-
+        private void IncrementMonth()
+        {
+            _CurrentWeek = _CurrentWeek.AddDays(30);
+            GetWeekEvents();
+            PN_Content.Refresh();
+            PN_DaysHeader.Refresh();
+        
+        
+        }
+        private void DecrementMonth()
+        {
+            _CurrentWeek = _CurrentWeek.AddDays(-30);
+            GetWeekEvents();
+            PN_Content.Refresh();
+            PN_DaysHeader.Refresh();
+        }
         private void PN_Content_Resize(object sender, EventArgs e)
         {
             AdjustMinInterval();
@@ -607,8 +633,7 @@ namespace PasswordKeeper
             }
         }
 
-        private void efface+-+-+-+
-        -+-+--+-+-+-+-+-+-++-+-+-+--+-+-+-+-+-+-+-+++-+-+-+-+-+-+-+-+-+-------------------------------------------------rToolStripMenuItem_Click(object sender, EventArgs e)
+        private void effacerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Voulez vous vraiment effacer cet événement ?") == System.Windows.Forms.DialogResult.OK)
             {
@@ -660,7 +685,6 @@ namespace PasswordKeeper
         {
             this.Text = "Agenda compacte - " + DateTime.Now.ToString();
         }
-
         private void PN_Hours_MouseHover(object sender, EventArgs e)
         {
             UCS_Zoom.Visible = true;
@@ -669,11 +693,8 @@ namespace PasswordKeeper
             UCS_Zoom.BringToFront();
             Point Po = new Point((PN_Hours.Location.X + PN_Hours.Width / 2 - UCS_Zoom.Width / 2), ((this.PointToClient(Cursor.Position).Y - (UCS_Zoom.Height / 2)) > PN_Scroll.Location.Y) ? ((this.PointToClient(Cursor.Position).Y - (UCS_Zoom.Height / 2)) + UCS_Zoom.Height < PN_Scroll.Location.Y + PN_Scroll.Height) ? (this.PointToClient(Cursor.Position).Y - (UCS_Zoom.Height / 2)) : PN_Scroll.Location.Y + PN_Scroll.Height-UCS_Zoom.Height : PN_Scroll.Location.Y);          
             UCS_Zoom.Location = Po;
-                
-            
-            
+                      
         }
-
         private void UCS_Zoom_MouseLeave(object sender, EventArgs e)
         {
             UCS_Zoom.Visible = false;
