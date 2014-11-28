@@ -62,6 +62,7 @@ namespace PasswordKeeper
             GotoCurrentWeek();
             T_Titre.Enabled = true;
             this.Text = "Agenda compacte - " + DateTime.Now.ToString();
+            AdjustZoom();
         }
 
         private void PN_Scroll_MouseEnter(Object sender, EventArgs e)
@@ -747,30 +748,28 @@ namespace PasswordKeeper
             UCS_Zoom.Enabled = false;
             UCS_Zoom.SendToBack();
         }
-        private int PreValue = 50;
         private void UCS_Zoom_ValueChanged(object sender, EventArgs e)
         {
-            if (PreValue > UCS_Zoom.Value)
-            {
-                if (PN_Content.Height > (PN_Frame.Height))
-                {
-                    PN_Content.Height = (int)(PN_Scroll.Height + (PN_Frame.Height * 12 - PN_Scroll.Height) * ((float)UCS_Zoom.Value / 100));
-                    PN_Hours.Height = (int)(PN_Scroll.Height + (PN_Frame.Height * 12 - PN_Scroll.Height) * ((float)UCS_Zoom.Value / 100));
-                    PN_Content.Refresh();
-                    PN_Hours.Refresh();
-                }
-            }
-            else if (PreValue<UCS_Zoom.Value)
-            {
-                if (PN_Content.Height < PN_Frame.Height * 12)
-                {
-                    PN_Content.Height = (int)(PN_Scroll.Height + (PN_Frame.Height * 12 - PN_Scroll.Height) * ((float)UCS_Zoom.Value / 100));
-                    PN_Hours.Height = (int)(PN_Scroll.Height + (PN_Frame.Height * 12 - PN_Scroll.Height) * ((float)UCS_Zoom.Value / 100));
-                    PN_Content.Refresh();
-                    PN_Hours.Refresh();
-                }
-            }
-            PreValue = UCS_Zoom.Value;
+
+            AdjustZoom();
+        }
+            
+
+        private void Form_WeekView_Resize(object sender, EventArgs e)
+        {
+            AdjustZoom();
+            //if(PN_Content.Height<PN_Scroll.Height)
+            //{
+            //    PN_Content.Height = PN_Scroll.Height;
+            //    PN_Hours.Height = PN_Scroll.Height;
+            //}
+        }
+        private void AdjustZoom()
+        {
+            PN_Content.Height = (int)(PN_Scroll.Height + (PN_Frame.Height * 12 - PN_Scroll.Height) * ((float)UCS_Zoom.Value / 100));
+            PN_Hours.Height = (int)(PN_Scroll.Height + (PN_Frame.Height * 12 - PN_Scroll.Height) * ((float)UCS_Zoom.Value / 100));
+            PN_Content.Refresh();
+            PN_Hours.Refresh();
         }
     }
 }

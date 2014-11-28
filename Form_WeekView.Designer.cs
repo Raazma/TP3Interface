@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_WeekView));
             this.PN_Frame = new System.Windows.Forms.Panel();
+            this.UCS_Zoom = new UC_Slider.UC_Slider();
             this.FBTN_DecrementWeek = new FlashButton.FlashButton();
             this.FBTN_IncrementWeek = new FlashButton.FlashButton();
             this.CM_Event = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -38,7 +39,6 @@
             this.CM_Calendrier = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ajouterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.T_Titre = new System.Windows.Forms.Timer(this.components);
-            this.UCS_Zoom = new UC_Slider.UC_Slider();
             this.PN_Scroll = new PasswordKeeper.DoubleBufferPanel();
             this.PN_Content = new PasswordKeeper.DoubleBufferPanel();
             this.PN_Hours = new PasswordKeeper.DoubleBufferPanel();
@@ -55,17 +55,37 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PN_Frame.BackColor = System.Drawing.Color.Orange;
-            this.PN_Frame.Controls.Add(this.UCS_Zoom);
             this.PN_Frame.Controls.Add(this.PN_Scroll);
             this.PN_Frame.Controls.Add(this.FBTN_DecrementWeek);
             this.PN_Frame.Controls.Add(this.FBTN_IncrementWeek);
             this.PN_Frame.Controls.Add(this.PN_DaysHeader);
+            this.PN_Frame.Controls.Add(this.UCS_Zoom);
             this.PN_Frame.Location = new System.Drawing.Point(0, 0);
             this.PN_Frame.Margin = new System.Windows.Forms.Padding(4);
             this.PN_Frame.Name = "PN_Frame";
             this.PN_Frame.Size = new System.Drawing.Size(991, 725);
             this.PN_Frame.TabIndex = 4;
             this.PN_Frame.MouseEnter += new System.EventHandler(this.UCS_Zoom_MouseLeave);
+            // 
+            // UCS_Zoom
+            // 
+            this.UCS_Zoom.BackColor = System.Drawing.Color.Transparent;
+            this.UCS_Zoom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.UCS_Zoom.BarDisableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.BarDisableImage")));
+            this.UCS_Zoom.BarEnableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.BarEnableImage")));
+            this.UCS_Zoom.CursorDisableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.CursorDisableImage")));
+            this.UCS_Zoom.CursorEnableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.CursorEnableImage")));
+            this.UCS_Zoom.CursorOverImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.CursorOverImage")));
+            this.UCS_Zoom.Location = new System.Drawing.Point(0, -46);
+            this.UCS_Zoom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UCS_Zoom.Maximum = 100;
+            this.UCS_Zoom.Minimum = 0;
+            this.UCS_Zoom.Name = "UCS_Zoom";
+            this.UCS_Zoom.Size = new System.Drawing.Size(24, 246);
+            this.UCS_Zoom.TabIndex = 0;
+            this.UCS_Zoom.Value = 0;
+            this.UCS_Zoom.ValueChanged += new UC_Slider.UC_Slider.ValueChangedHandler(this.UCS_Zoom_ValueChanged);
+            this.UCS_Zoom.MouseLeave += new System.EventHandler(this.UCS_Zoom_MouseLeave);
             // 
             // FBTN_DecrementWeek
             // 
@@ -133,26 +153,6 @@
             // 
             this.T_Titre.Interval = 500;
             this.T_Titre.Tick += new System.EventHandler(this.T_Titre_Tick);
-            // 
-            // UCS_Zoom
-            // 
-            this.UCS_Zoom.BackColor = System.Drawing.Color.Transparent;
-            this.UCS_Zoom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.UCS_Zoom.BarDisableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.BarDisableImage")));
-            this.UCS_Zoom.BarEnableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.BarEnableImage")));
-            this.UCS_Zoom.CursorDisableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.CursorDisableImage")));
-            this.UCS_Zoom.CursorEnableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.CursorEnableImage")));
-            this.UCS_Zoom.CursorOverImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.CursorOverImage")));
-            this.UCS_Zoom.Location = new System.Drawing.Point(0, -46);
-            this.UCS_Zoom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.UCS_Zoom.Maximum = 100;
-            this.UCS_Zoom.Minimum = 0;
-            this.UCS_Zoom.Name = "UCS_Zoom";
-            this.UCS_Zoom.Size = new System.Drawing.Size(24, 246);
-            this.UCS_Zoom.TabIndex = 0;
-            this.UCS_Zoom.Value = 50;
-            this.UCS_Zoom.ValueChanged += new UC_Slider.UC_Slider.ValueChangedHandler(this.UCS_Zoom_ValueChanged);
-            this.UCS_Zoom.MouseLeave += new System.EventHandler(this.UCS_Zoom_MouseLeave);
             // 
             // PN_Scroll
             // 
@@ -224,6 +224,7 @@
             this.Name = "Form_WeekView";
             this.Text = "Agenda compacte...";
             this.Load += new System.EventHandler(this.Form_WeekView_Load);
+            this.Resize += new System.EventHandler(this.Form_WeekView_Resize);
             this.PN_Frame.ResumeLayout(false);
             this.CM_Event.ResumeLayout(false);
             this.CM_Calendrier.ResumeLayout(false);
