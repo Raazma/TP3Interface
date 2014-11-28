@@ -49,7 +49,7 @@
   <ItemGroup>
     <Reference Include="BitmapUtilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>UC_Slider\BitmapUtilities.dll</HintPath>
+      <HintPath>..\BitmapUtilities.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
