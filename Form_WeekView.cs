@@ -758,7 +758,7 @@ namespace PasswordKeeper
         private void Form_WeekView_Resize(object sender, EventArgs e)
         {
             AdjustZoom();
-            //if(PN_Content.Height<PN_Scroll.Height)
+            //if (PN_Content.Height < PN_Scroll.Height)
             //{
             //    PN_Content.Height = PN_Scroll.Height;
             //    PN_Hours.Height = PN_Scroll.Height;
@@ -770,6 +770,11 @@ namespace PasswordKeeper
             PN_Hours.Height = (int)(PN_Scroll.Height + (PN_Frame.Height * 12 - PN_Scroll.Height) * ((float)UCS_Zoom.Value / 100));
             PN_Content.Refresh();
             PN_Hours.Refresh();
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
