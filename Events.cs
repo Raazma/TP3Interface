@@ -12,7 +12,7 @@ namespace PasswordKeeper
     class Events
     {
         private List<Event> events = new List<Event>();
-        public string ConnectionString {get; set;}
+        public string ConnexionString {get; set;}
 
         public TargetPart TargetPart { get; set; }
 

@@ -226,29 +226,47 @@ namespace PasswordKeeper
             else
                 return pixel;
         }
+        bool rightButtonDown = false;
+        int AnchorDeltaMinutes;
         private void PN_Content_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (!rightButtonDown)
             {
-                mouseIsDown = true;
-                firstMouseLocation = lastMouseLocation = e.Location;
-                if (Events.TargetEvent != null)
+                if (e.Button == System.Windows.Forms.MouseButtons.Left)
                 {
-                    switch (Events.TargetPart)
+                    mouseIsDown = true;
+                    firstMouseLocation = lastMouseLocation = e.Location;
+                    //Events.DeSelectAll();
+                    if (Events.TargetEvent != null)
                     {
-                        case TargetPart.Top:
-                            firstMouseLocation.Y =
-                            lastMouseLocation.Y = RoundToMinutes(Event.HourToPixel(Events.TargetEvent.Starting.Hour, Events.TargetEvent.Starting.Minute, PN_Content.Height), minInterval);
-                            break;
-                        case TargetPart.Bottom:
-                            firstMouseLocation.Y =
-                            lastMouseLocation.Y = RoundToMinutes(Event.HourToPixel(Events.TargetEvent.Ending.Hour, Events.TargetEvent.Ending.Minute, PN_Content.Height), minInterval);
-                            break;
-                        default:  break;
+                        switch (Events.TargetPart)
+                        {
+                            case TargetPart.Top:
+                                firstMouseLocation.Y =
+                                lastMouseLocation.Y = RoundToMinutes(Event.HourToPixel(Events.TargetEvent.Starting.Hour, Events.TargetEvent.Starting.Minute, PN_Content.Height), minInterval);
+                                break;
+                            case TargetPart.Bottom:
+                                firstMouseLocation.Y =
+                                lastMouseLocation.Y = RoundToMinutes(Event.HourToPixel(Events.TargetEvent.Ending.Hour, Events.TargetEvent.Ending.Minute, PN_Content.Height), minInterval);
+                                break;
+                            case TargetPart.Inside:
+                                int StartingMinutes = Events.TargetEvent.Starting.Hour * 60 + Events.TargetEvent.Starting.Minute;
+                                AnchorDeltaMinutes = Event.PixelToMinutes(e.Location.Y, PN_Content.Height) - StartingMinutes;
+                                break;
+                            default: break;
+                        }
+                        //Events.TargetEvent.Selected = true;
+                        PN_Content.Refresh();
                     }
                 }
+                else
+                    if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                    {
+                        rightButtonDown = true;
+                    }
             }
-            
+            else
+                rightButtonDown = false;
         }
 
         private void AjustCurrentWeek()
@@ -302,13 +320,14 @@ namespace PasswordKeeper
 
         private void PN_Content_MouseMove(object sender, MouseEventArgs e)
         {
-            int Bottom = RoundToMinutes(e.Location.Y, minInterval);
+            int MouseVerticalLocation = RoundToMinutes(e.Location.Y, minInterval);
             if (mouseIsDown)
             {
                 AdjustScroll(e.Location.Y);
                 if (Events.TargetEvent != null)
                 {
-                    DateTime Moving = LocationToDateTime(new Point(RoundToMinutes(firstMouseLocation.X, minInterval), Bottom));
+                    //Events.TargetEvent.Selected = true;
+                    DateTime Moving = LocationToDateTime(new Point(RoundToMinutes(firstMouseLocation.X, minInterval), MouseVerticalLocation));
                     switch (Events.TargetPart)
                     {
                         case TargetPart.Top:
@@ -322,7 +341,7 @@ namespace PasswordKeeper
                                 Events.TargetEvent.Starting = Moving;
                             break;
                         case TargetPart.Bottom:
-                            
+
                             if (Moving < Events.TargetEvent.Starting)
                             {
                                 Events.TargetPart = TargetPart.Top;
@@ -333,48 +352,52 @@ namespace PasswordKeeper
                                 Events.TargetEvent.Ending = Moving;
                             break;
                         case TargetPart.Inside:
-                            int deltaY = RoundToMinutes(e.Location.Y, minInterval) - RoundToMinutes(lastMouseLocation.Y, minInterval);
-                            Events.TargetEvent.Starting = LocationToDateTime(new Point(e.Location.X, RoundToMinutes(Event.HourToPixel(Events.TargetEvent.Starting.Hour, Events.TargetEvent.Starting.Minute, PN_Content.Height) + deltaY, minInterval)));
-                            Events.TargetEvent.Ending = LocationToDateTime(new Point(e.Location.X, RoundToMinutes(Event.HourToPixel(Events.TargetEvent.Ending.Hour, Events.TargetEvent.Ending.Minute, PN_Content.Height) + deltaY, minInterval)));
+
+                            int StartingMinutes = Events.TargetEvent.Starting.Hour * 60 + Events.TargetEvent.Starting.Minute;
+                            int movingMinutes = (int)Math.Max(Moving.Hour * 60 + Moving.Minute - AnchorDeltaMinutes, 0);
+                            DateTime start = Events.TargetEvent.Starting;
+                            Events.TargetEvent.Starting = new DateTime(LocationToDateTime(new Point(e.Location.X, 10)).Year, LocationToDateTime(new Point(e.Location.X, 10)).Month, LocationToDateTime(new Point(e.Location.X, 10)).Day, (int)Math.Truncate(movingMinutes / 60F), movingMinutes - (int)Math.Truncate(movingMinutes / 60F) * 60, 0);
+                            int EndingMinutes = Events.TargetEvent.Ending.Hour * 60 + Events.TargetEvent.Ending.Minute;
+                            int deltaHours = (int)Math.Truncate((EndingMinutes - StartingMinutes) / 60F);
+                            int deltaMinutes = (EndingMinutes - StartingMinutes) - 60 * deltaHours;
+                            EndingMinutes = Events.TargetEvent.Starting.Hour * 60 + Events.TargetEvent.Starting.Minute + deltaHours * 60 + deltaMinutes;
+                            Events.TargetEvent.Ending = new DateTime(LocationToDateTime(new Point(e.Location.X, 10)).Year,
+                                                                         LocationToDateTime(new Point(e.Location.X, 10)).Month,
+                                                                         LocationToDateTime(new Point(e.Location.X, 10)).Day,
+                                                                         (int)Math.Min(Math.Truncate(EndingMinutes / 60F), 23),
+                                                                         EndingMinutes - (int)Math.Truncate(EndingMinutes / 60F) * 60, 0);
                             AjustCurrentWeek();
-                            break; 
+                            break;
                         default: break;
                     }
-                    PN_Content.Refresh(); 
+                    PN_Content.Refresh();
                 }
                 else
                 {
+                    //Events.DeSelectAll();
                     int day = (int)Math.Truncate(firstMouseLocation.X / (PN_Content.Width / 7F));
                     PN_Content.Cursor = Cursors.Cross;
                     Point top = new Point((int)Math.Round(day * PN_Content.Width / 7F), RoundToMinutes(firstMouseLocation.Y, minInterval));
-                    Rectangle border = new Rectangle(top.X + 1, (int)Math.Min(top.Y, Bottom), (int)Math.Round(PN_Content.Width / 7F) - 2, (int)Math.Abs(Bottom - top.Y));
+                    Rectangle border = new Rectangle(top.X + 1, (int)Math.Min(top.Y, MouseVerticalLocation), (int)Math.Round(PN_Content.Width / 7F) - 2, (int)Math.Abs(MouseVerticalLocation - top.Y));
                     PN_Content.Refresh();
                     PN_Content.CreateGraphics().DrawRectangle(pen, border);
                 }
             }
             else
+            {
                 Events.UpdateTarget(e.Location);
+                if (Events.TargetEvent != null)
+                    PN_Content.ContextMenuStrip = CM_Event;
+                else
+                    PN_Content.ContextMenuStrip = CM_Calendrier;
+
+            }
             lastMouseLocation = e.Location;
+
         }
 
-        private DateTime LocationToDateTime(Point location)
-        {
-            DateTime date = new DateTime(_CurrentWeek.Year, _CurrentWeek.Month, _CurrentWeek.Day);
-            int adjust = (location.X < 0? (int)(PN_Content.Width / 7F) : 0);
-            int days = (int)(Math.Truncate((location.X - adjust) / (PN_Content.Width / 7F)));
-
-            date = date.AddDays(days);
-            int Minutes = (int)Math.Max(Event.PixelToMinutes(RoundToMinutes(location.Y, minInterval), PN_Content.Height), 0);
-            int Hours = (int)Math.Min((int)Math.Truncate(Minutes / 60f), 23);
-            Minutes = Minutes - Hours * 60;
-            if (Minutes >= 60)
-                Minutes = 59;
-            return new DateTime(date.Year, date.Month, date.Day, Hours, Minutes, 0); 
-        }
-         
         private void ConludeMouseEvent()
         {
-           
             if (mouseIsDown)
             {
                 mouseIsDown = false;
@@ -396,49 +419,72 @@ namespace PasswordKeeper
                     }
                     TableEvents tableEvents = new TableEvents(ConnexionString);
                     tableEvents.UpdateEventRecord(Events.TargetEvent);
+                    //ScrollToEvent(Events.TargetEvent);
+                    //Events.TargetEvent.Selected = true;
                 }
                 else
-                {
-                    DLG_Events dlg = new DLG_Events();
-                    Event Event = new Event();
+                { // Create a new Event...
 
-
-                    Event.Starting = LocationToDateTime(firstMouseLocation);
-
-                    DateTime date = LocationToDateTime(lastMouseLocation);
-                    Event.Ending = new DateTime(Event.Starting.Year, Event.Starting.Month, Event.Starting.Day, date.Hour, date.Minute, 0);
-
-                    if (Event.Starting > Event.Ending)
+                    if (firstMouseLocation.Y != lastMouseLocation.Y)
                     {
-                        Events.TargetPart = TargetPart.Top;
-                        DateTime d = Event.Starting;
-                        Event.Starting = Event.Ending;
-                        Event.Ending = d;
+                        DLG_Events dlg = new DLG_Events();
+                        Event Event = new Event();
+                        Event.Starting = LocationToDateTime(firstMouseLocation);
+                        DateTime date = LocationToDateTime(lastMouseLocation);
+                        Event.Ending = new DateTime(Event.Starting.Year, Event.Starting.Month, Event.Starting.Day, date.Hour, date.Minute, 0);
 
+                        // Validate starting and ending coherence
+                        if (Event.Starting > Event.Ending)
+                        {
+                            Events.TargetPart = TargetPart.Top;
+                            DateTime d = Event.Starting;
+                            Event.Starting = Event.Ending;
+                            Event.Ending = d;
+
+                        }
+                        TimeSpan delta = Event.Ending.Subtract(Event.Starting);
+                        if (delta.Minutes < 30 && delta.Hours == 0)
+                        {
+                            Event.Ending = Event.Starting + new TimeSpan(0, 30, 0);
+                        }
+
+                        dlg.Event = Event.Klone();
+                        if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            TableEvents tableEvents = new TableEvents(ConnexionString);
+                            tableEvents.AddEvent(dlg.Event);
+                            //ScrollToEvent(dlg.Event);
+                            //DuplicateEvent(dlg.Event, dlg.Period_Code, dlg.Frequency);
+                        }
                     }
-                    TimeSpan delta = Event.Ending.Subtract(Event.Starting);
-                    if (delta.Minutes < 30 && delta.Hours == 0)
-                    {
-                         Event.Ending = Event.Starting + new TimeSpan(0, 30, 0);
-                    }
-                    dlg.Event = Event.Klone();
-                    if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    {
-                        TableEvents tableEvents = new TableEvents(ConnexionString);
-                        tableEvents.AddEvent(dlg.Event);
-                    }
+                    PN_Content.Refresh();
                 }
-                GetWeekEvents();
-                PN_Content.Refresh();
             }
-            
         }
+
+        private DateTime LocationToDateTime(Point location)
+        {
+            DateTime date = new DateTime(_CurrentWeek.Year, _CurrentWeek.Month, _CurrentWeek.Day);
+            int adjust = (location.X < 0? (int)(PN_Content.Width / 7F) : 0);
+            int days = (int)(Math.Truncate((location.X - adjust) / (PN_Content.Width / 7F)));
+
+            date = date.AddDays(days);
+            int Minutes = (int)Math.Max(Event.PixelToMinutes(RoundToMinutes(location.Y, minInterval), PN_Content.Height), 0);
+            int Hours = (int)Math.Min((int)Math.Truncate(Minutes / 60f), 23);
+            Minutes = Minutes - Hours * 60;
+            if (Minutes >= 60)
+                Minutes = 59;
+            return new DateTime(date.Year, date.Month, date.Day, Hours, Minutes, 0); 
+        }
+         
+        
 
         private void PN_Content_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            ConludeMouseEvent();
+            if (e.Button != System.Windows.Forms.MouseButtons.Right)
+                ConludeMouseEvent();
         }
+
 
         private void Decrement_Week()
         {
