@@ -34,14 +34,22 @@
             this.TBX_Description = new System.Windows.Forms.TextBox();
             this.DTP_Date = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.DTP_Starting = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.DTP_Ending = new System.Windows.Forms.DateTimePicker();
             this.FB_Abort = new FlashButton.FlashButton();
             this.FB_Ok = new FlashButton.FlashButton();
             this.CB_Type = new System.Windows.Forms.ComboBox();
             this.BT_Couleur = new System.Windows.Forms.Button();
+            this.NUD_StartHour = new System.Windows.Forms.NumericUpDown();
+            this.NUD_StartMin = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.NUD_EndMin = new System.Windows.Forms.NumericUpDown();
+            this.NUD_EndHour = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_StartHour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_StartMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_EndMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_EndHour)).BeginInit();
             this.SuspendLayout();
             // 
             // TBX_Title
@@ -104,16 +112,6 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Date";
             // 
-            // DTP_Starting
-            // 
-            this.DTP_Starting.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DTP_Starting.Location = new System.Drawing.Point(93, 191);
-            this.DTP_Starting.Margin = new System.Windows.Forms.Padding(4);
-            this.DTP_Starting.Name = "DTP_Starting";
-            this.DTP_Starting.Size = new System.Drawing.Size(107, 22);
-            this.DTP_Starting.TabIndex = 4;
-            this.DTP_Starting.ValueChanged += new System.EventHandler(this.DTP_Starting_ValueChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -133,16 +131,6 @@
             this.label5.Size = new System.Drawing.Size(27, 17);
             this.label5.TabIndex = 1;
             this.label5.Text = "Fin";
-            // 
-            // DTP_Ending
-            // 
-            this.DTP_Ending.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DTP_Ending.Location = new System.Drawing.Point(93, 223);
-            this.DTP_Ending.Margin = new System.Windows.Forms.Padding(4);
-            this.DTP_Ending.Name = "DTP_Ending";
-            this.DTP_Ending.Size = new System.Drawing.Size(107, 22);
-            this.DTP_Ending.TabIndex = 45;
-            this.DTP_Ending.ValueChanged += new System.EventHandler(this.DTP_Ending_ValueChanged);
             // 
             // FB_Abort
             // 
@@ -202,17 +190,101 @@
             this.BT_Couleur.UseVisualStyleBackColor = true;
             this.BT_Couleur.Click += new System.EventHandler(this.BT_Couleur_Click);
             // 
+            // NUD_StartHour
+            // 
+            this.NUD_StartHour.Location = new System.Drawing.Point(101, 196);
+            this.NUD_StartHour.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.NUD_StartHour.Name = "NUD_StartHour";
+            this.NUD_StartHour.Size = new System.Drawing.Size(51, 22);
+            this.NUD_StartHour.TabIndex = 51;
+            this.NUD_StartHour.ValueChanged += new System.EventHandler(this.NUD_StartHour_ValueChanged);
+            // 
+            // NUD_StartMin
+            // 
+            this.NUD_StartMin.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.NUD_StartMin.Location = new System.Drawing.Point(176, 196);
+            this.NUD_StartMin.Maximum = new decimal(new int[] {
+            55,
+            0,
+            0,
+            0});
+            this.NUD_StartMin.Name = "NUD_StartMin";
+            this.NUD_StartMin.Size = new System.Drawing.Size(51, 22);
+            this.NUD_StartMin.TabIndex = 52;
+            this.NUD_StartMin.ValueChanged += new System.EventHandler(this.NUD_StartMin_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(158, 196);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(12, 17);
+            this.label6.TabIndex = 53;
+            this.label6.Text = ":";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(158, 228);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(12, 17);
+            this.label7.TabIndex = 56;
+            this.label7.Text = ":";
+            // 
+            // NUD_EndMin
+            // 
+            this.NUD_EndMin.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.NUD_EndMin.Location = new System.Drawing.Point(176, 228);
+            this.NUD_EndMin.Maximum = new decimal(new int[] {
+            55,
+            0,
+            0,
+            0});
+            this.NUD_EndMin.Name = "NUD_EndMin";
+            this.NUD_EndMin.Size = new System.Drawing.Size(51, 22);
+            this.NUD_EndMin.TabIndex = 55;
+            this.NUD_EndMin.ValueChanged += new System.EventHandler(this.NUD_EndMin_ValueChanged);
+            // 
+            // NUD_EndHour
+            // 
+            this.NUD_EndHour.Location = new System.Drawing.Point(101, 228);
+            this.NUD_EndHour.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.NUD_EndHour.Name = "NUD_EndHour";
+            this.NUD_EndHour.Size = new System.Drawing.Size(51, 22);
+            this.NUD_EndHour.TabIndex = 54;
+            this.NUD_EndHour.ValueChanged += new System.EventHandler(this.NUD_EndHour_ValueChanged);
+            // 
             // DLG_Events
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(497, 265);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.NUD_EndMin);
+            this.Controls.Add(this.NUD_EndHour);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.NUD_StartMin);
+            this.Controls.Add(this.NUD_StartHour);
             this.Controls.Add(this.BT_Couleur);
             this.Controls.Add(this.CB_Type);
             this.Controls.Add(this.FB_Abort);
             this.Controls.Add(this.FB_Ok);
-            this.Controls.Add(this.DTP_Ending);
-            this.Controls.Add(this.DTP_Starting);
             this.Controls.Add(this.DTP_Date);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.TBX_Description);
@@ -227,6 +299,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DLG_Events";
             this.Load += new System.EventHandler(this.DLG_Events_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_StartHour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_StartMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_EndMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_EndHour)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,13 +316,17 @@
         private System.Windows.Forms.TextBox TBX_Description;
         private System.Windows.Forms.DateTimePicker DTP_Date;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker DTP_Starting;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker DTP_Ending;
         private FlashButton.FlashButton FB_Ok;
         private FlashButton.FlashButton FB_Abort;
         private System.Windows.Forms.ComboBox CB_Type;
         private System.Windows.Forms.Button BT_Couleur;
+        private System.Windows.Forms.NumericUpDown NUD_StartHour;
+        private System.Windows.Forms.NumericUpDown NUD_StartMin;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown NUD_EndMin;
+        private System.Windows.Forms.NumericUpDown NUD_EndHour;
     }
 }

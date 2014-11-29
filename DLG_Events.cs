@@ -41,8 +41,10 @@ namespace PasswordKeeper
                 TBX_Description.Text = Event.Description;
                 blockUpdate = true;
                 DTP_Date.Value = Klone(Event.Starting);
-                DTP_Starting.Value = Klone(Event.Starting);
-                DTP_Ending.Value = Klone(Event.Ending);
+                NUD_StartHour.Value = Klone(Event.Starting).Hour;
+                NUD_StartMin.Value = Klone(Event.Starting).Minute;
+                NUD_EndHour.Value = Klone(Event.Ending).Hour;
+                NUD_EndMin.Value = Klone(Event.Ending).Minute;
                 blockUpdate = false;
                 CB_Type.SelectedIndex = Event.Event_Type;
 
@@ -57,11 +59,11 @@ namespace PasswordKeeper
 
         private bool ValidateData_Events() //F.L.
         {
-            if (string.IsNullOrEmpty(TBX_Title.Text)||
-                DateTime.Parse(DTP_Date.Value.Date.ToString()) < DateTime.Parse(DateTime.Now.Date.ToString()) ||
-                (DateTime.Parse(DTP_Date.Value.Date.ToString()) == DateTime.Parse(DateTime.Now.Date.ToString())  &&
-                    DateTime.Parse(DTP_Starting.Value.TimeOfDay.ToString())<DateTime.Parse(DateTime.Now.TimeOfDay.ToString()))
-                || DateTime.Parse(DTP_Starting.Value.TimeOfDay.ToString())>=DateTime.Parse(DTP_Ending.Value.TimeOfDay.ToString()))
+            if (string.IsNullOrEmpty(TBX_Title.Text)|| //si le Titre est NULL ou vide
+                DateTime.Parse(DTP_Date.Value.Date.ToString()) < DateTime.Parse(DateTime.Now.Date.ToString()) || //si la date est avant aujourd'hui
+                (DateTime.Parse(DTP_Date.Value.Date.ToString()) == DateTime.Parse(DateTime.Now.Date.ToString()) &&              //si la date est aujourd'hui
+                    NUD_StartHour.Value < DateTime.Now.Hour || (NUD_StartHour.Value <= DateTime.Now.Hour && NUD_StartMin.Value < DateTime.Now.Minute))  //et que l'heure est avant l'heure présente
+                || NUD_StartHour.Value > NUD_EndHour.Value || (NUD_StartHour.Value >= NUD_EndHour.Value && NUD_StartMin.Value > NUD_EndMin.Value)) //si la l'heure de fin est avant la date de début
                 return false;
             
             return true;
@@ -86,49 +88,19 @@ namespace PasswordKeeper
                 Event.Starting = new DateTime(DTP_Date.Value.Year,
                                                 DTP_Date.Value.Month,
                                                 DTP_Date.Value.Day,
-                                                DTP_Starting.Value.Hour,
-                                                DTP_Starting.Value.Minute,
+                                                (int)NUD_StartHour.Value,
+                                                (int)NUD_StartMin.Value,
                                                 0);
 
                 Event.Ending = new DateTime(DTP_Date.Value.Year,
                                             DTP_Date.Value.Month,
                                             DTP_Date.Value.Day,
-                                            DTP_Ending.Value.Hour,
-                                            DTP_Ending.Value.Minute,
+                                            (int)NUD_EndHour.Value,
+                                            (int)NUD_EndMin.Value,
                                             0);
             }
             FB_Ok.Enabled = ValidateData_Events();
         }
-
-        private void DTP_Starting_ValueChanged(object sender, EventArgs e)
-        {
-            if (!blockUpdate)
-            {
-                Event.Starting = new DateTime(DTP_Date.Value.Year,
-                                                 DTP_Date.Value.Month,
-                                                 DTP_Date.Value.Day,
-                                                 DTP_Starting.Value.Hour,
-                                                 DTP_Starting.Value.Minute,
-                                                 0);
-            }
-            FB_Ok.Enabled = ValidateData_Events();
-        }
-
-        private void DTP_Ending_ValueChanged(object sender, EventArgs e)
-        {
-            if (!blockUpdate)
-            {
-
-                Event.Ending = new DateTime(DTP_Date.Value.Year,
-                                            DTP_Date.Value.Month,
-                                            DTP_Date.Value.Day,
-                                            DTP_Ending.Value.Hour,
-                                            DTP_Ending.Value.Minute,
-                                            0);
-            }
-            FB_Ok.Enabled = ValidateData_Events();
-        }
-
 
         private void FB_Ok_Click(object sender, EventArgs e)
         {
@@ -162,6 +134,72 @@ namespace PasswordKeeper
                 BT_Couleur.BackColor = Color.FromArgb(Int32.Parse(Properties.Settings.Default.Event_Type_Colors[CB_Type.SelectedIndex].Split(',').ElementAt(0)), Int32.Parse(Properties.Settings.Default.Event_Type_Colors[CB_Type.SelectedIndex].Split(',').ElementAt(1)), Int32.Parse(Properties.Settings.Default.Event_Type_Colors[CB_Type.SelectedIndex].Split(',').ElementAt(2)));
             }
 
+        }
+
+        private void NUD_StartHour_ValueChanged(object sender, EventArgs e)
+        {
+            if (!blockUpdate)
+            {
+                Event.Starting = new DateTime(DTP_Date.Value.Year,
+                                                 DTP_Date.Value.Month,
+                                                 DTP_Date.Value.Day,
+                                                 (int)NUD_StartHour.Value,
+                                                 (int)NUD_StartMin.Value,
+                                                 0);
+            }
+            FB_Ok.Enabled = ValidateData_Events();
+        }
+
+        private void NUD_StartMin_ValueChanged(object sender, EventArgs e)
+        {
+            if (NUD_StartMin.Value % 5 >= 3)
+                NUD_StartMin.Value += (5 - (NUD_StartMin.Value % 5));
+            else if (NUD_StartMin.Value % 5>0)
+                NUD_StartMin.Value -= (NUD_StartMin.Value % 5);
+            if (!blockUpdate)
+            {
+                Event.Starting = new DateTime(DTP_Date.Value.Year,
+                                                 DTP_Date.Value.Month,
+                                                 DTP_Date.Value.Day,
+                                                 (int)NUD_StartHour.Value,
+                                                 (int)NUD_StartMin.Value,
+                                                 0);
+            }
+            FB_Ok.Enabled = ValidateData_Events();
+        }
+
+        private void NUD_EndMin_ValueChanged(object sender, EventArgs e)
+        {
+            if (NUD_EndMin.Value % 5 >= 3)
+                NUD_EndMin.Value += (5 - (NUD_EndMin.Value % 5));
+            else if (NUD_EndMin.Value % 5 > 0)
+                NUD_EndMin.Value -= (NUD_EndMin.Value % 5);
+            if (!blockUpdate)
+            {
+
+                Event.Ending = new DateTime(DTP_Date.Value.Year,
+                                            DTP_Date.Value.Month,
+                                            DTP_Date.Value.Day,
+                                            (int)NUD_EndHour.Value,
+                                            (int)NUD_EndMin.Value,
+                                            0);
+            }
+            FB_Ok.Enabled = ValidateData_Events();
+        }
+
+        private void NUD_EndHour_ValueChanged(object sender, EventArgs e)
+        {
+            if (!blockUpdate)
+            {
+
+                Event.Ending = new DateTime(DTP_Date.Value.Year,
+                                            DTP_Date.Value.Month,
+                                            DTP_Date.Value.Day,
+                                            (int)NUD_EndHour.Value,
+                                            (int)NUD_EndMin.Value,
+                                            0);
+            }
+            FB_Ok.Enabled = ValidateData_Events();
         }
     }
 }
