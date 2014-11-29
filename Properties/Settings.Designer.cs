@@ -68,6 +68,7 @@ namespace PasswordKeeper.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Orange")]
         public global::System.Drawing.Color DayColor {
             get {
                 return ((global::System.Drawing.Color)(this["DayColor"]));
@@ -85,6 +86,102 @@ namespace PasswordKeeper.Properties {
             }
             set {
                 this["HourColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color LineHourColor {
+            get {
+                return ((global::System.Drawing.Color)(this["LineHourColor"]));
+            }
+            set {
+                this["LineHourColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color LineHalfHourColor {
+            get {
+                return ((global::System.Drawing.Color)(this["LineHalfHourColor"]));
+            }
+            set {
+                this["LineHalfHourColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color BackgroundColor {
+            get {
+                return ((global::System.Drawing.Color)(this["BackgroundColor"]));
+            }
+            set {
+                this["BackgroundColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color VertLineColor {
+            get {
+                return ((global::System.Drawing.Color)(this["VertLineColor"]));
+            }
+            set {
+                this["VertLineColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Arial Narrow, 7.8pt")]
+        public global::System.Drawing.Font CalendarFontTitre {
+            get {
+                return ((global::System.Drawing.Font)(this["CalendarFontTitre"]));
+            }
+            set {
+                this["CalendarFontTitre"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color CalendarFontColorTitre {
+            get {
+                return ((global::System.Drawing.Color)(this["CalendarFontColorTitre"]));
+            }
+            set {
+                this["CalendarFontColorTitre"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Arial Narrow, 7.8pt")]
+        public global::System.Drawing.Font CalendarFontDesc {
+            get {
+                return ((global::System.Drawing.Font)(this["CalendarFontDesc"]));
+            }
+            set {
+                this["CalendarFontDesc"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color CalendarFontColorDesc {
+            get {
+                return ((global::System.Drawing.Color)(this["CalendarFontColorDesc"]));
+            }
+            set {
+                this["CalendarFontColorDesc"] = value;
             }
         }
     }

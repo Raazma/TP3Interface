@@ -95,8 +95,9 @@ namespace PasswordKeeper
         private void Fill_Agenda(Graphics DC)
         {
             Brush brush = new SolidBrush(Color.Black);
-            Pen pen1 = new Pen(Color.LightGray, 1);
-            Pen pen2 = new Pen(Color.LightGray, 1);
+            Pen pen1 = new Pen(Properties.Settings.Default.LineHourColor, 1);
+            Pen pen2 = new Pen(Properties.Settings.Default.LineHalfHourColor, 1);
+            Pen pen3 = new Pen(Properties.Settings.Default.VertLineColor, 1);
             pen2.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
             for (int hour = 0; hour < 24; hour++)
             {
@@ -107,12 +108,13 @@ namespace PasswordKeeper
             for (int dayNum = 0; dayNum < 7; dayNum++)
             {
                 location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * dayNum), 0);
-                DC.DrawLine(pen1, location.X, 0, location.X, PN_Content.Height);
+                DC.DrawLine(pen3, location.X, 0, location.X, PN_Content.Height);
             }
             location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * 7), 0);
-            DC.DrawLine(pen1, location.X - 1, 0, location.X - 1, PN_Content.Height);
+            DC.DrawLine(pen3, location.X - 1, 0, location.X - 1, PN_Content.Height);
             Events.Draw(DC);
             PN_Scroll.Focus();
+            PN_Hours.BackColor = Properties.Settings.Default.HourColor;
         }
 
         private void PN_Content_Paint(object sender, PaintEventArgs e)
@@ -462,6 +464,7 @@ namespace PasswordKeeper
                             //DuplicateEvent(dlg.Event, dlg.Period_Code, dlg.Frequency);
                         }
                     }
+                    GotoCurrentWeek();
                     PN_Content.Refresh();
                 }
             }
@@ -784,8 +787,8 @@ namespace PasswordKeeper
         private void couleurDeFondToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             DLG_HLSColorPicker form = new DLG_HLSColorPicker();
-
-            if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            form.color = Properties.Settings.Default.DayColor;
+            if (form.ShowDialog() == DialogResult.OK)
             {
 
                 Properties.Settings.Default.DayColor = form.color;
@@ -819,5 +822,97 @@ namespace PasswordKeeper
 
             }
         }
+
+        private void couleurDeFondToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DLG_HLSColorPicker ColorPicker = new DLG_HLSColorPicker();
+            ColorPicker.color = Properties.Settings.Default.BackgroundColor;
+            if (ColorPicker.ShowDialog() == DialogResult.OK)
+            {
+                Properties.Settings.Default.BackgroundColor = ColorPicker.color;
+                Properties.Settings.Default.Save();
+                PN_Content.BackColor = Properties.Settings.Default.BackgroundColor;
+            }
+        }
+
+        private void heuresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DLG_HLSColorPicker ColorPicker = new DLG_HLSColorPicker();
+            ColorPicker.color = Properties.Settings.Default.LineHourColor;
+            if (ColorPicker.ShowDialog() == DialogResult.OK)
+            {
+                Properties.Settings.Default.LineHourColor = ColorPicker.color;
+                Properties.Settings.Default.Save();
+                PN_Content.Refresh();
+            }
+        }
+
+        private void demiHeureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DLG_HLSColorPicker ColorPicker = new DLG_HLSColorPicker();
+            ColorPicker.color = Properties.Settings.Default.LineHalfHourColor;
+            if (ColorPicker.ShowDialog() == DialogResult.OK)
+            {
+                Properties.Settings.Default.LineHalfHourColor = ColorPicker.color;
+                Properties.Settings.Default.Save();
+                PN_Content.Refresh();
+            }
+        }
+
+        private void verticalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DLG_HLSColorPicker ColorPicker = new DLG_HLSColorPicker();
+            ColorPicker.color = Properties.Settings.Default.VertLineColor;
+            if (ColorPicker.ShowDialog() == DialogResult.OK)
+            {
+                Properties.Settings.Default.VertLineColor = ColorPicker.color;
+                Properties.Settings.Default.Save();
+                PN_Content.Refresh();
+            }
+        }
+
+        private void policeEtCouleurDeCaractèresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void titreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FontDialog FD = new FontDialog();
+            FD.ShowColor = true;
+            FD.MaxSize = 8;
+            FD.MinSize = 8;
+            FD.AllowScriptChange = false;
+            FD.Font = Properties.Settings.Default.CalendarFontTitre;
+            FD.Color = Properties.Settings.Default.CalendarFontColorTitre;
+            if (FD.ShowDialog() == DialogResult.OK)
+            {
+                
+                Properties.Settings.Default.CalendarFontTitre = FD.Font;
+                Properties.Settings.Default.CalendarFontColorTitre = FD.Color;
+                Properties.Settings.Default.Save();
+                PN_Content.Refresh();
+            }
+        }
+
+        private void heureEtDescriptionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FontDialog FD = new FontDialog();
+            FD.ShowColor = true;
+            FD.MaxSize = 8;
+            FD.MinSize = 8;
+            FD.AllowScriptChange = false;
+            FD.Font = Properties.Settings.Default.CalendarFontDesc;
+            FD.Color = Properties.Settings.Default.CalendarFontColorDesc;
+            if (FD.ShowDialog() == DialogResult.OK)
+            {
+
+                Properties.Settings.Default.CalendarFontDesc = FD.Font;
+                Properties.Settings.Default.CalendarFontColorDesc = FD.Color;
+                Properties.Settings.Default.Save();
+                PN_Content.Refresh();
+            }
+        }
+       
     }
 }

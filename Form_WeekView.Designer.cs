@@ -60,6 +60,8 @@
             this.verticalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.policeEtCouleurDeCaractèresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.T_Titre = new System.Windows.Forms.Timer(this.components);
+            this.titreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.heureEtDescriptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PN_Scroll = new PasswordKeeper.DoubleBufferPanel();
             this.PN_Content = new PasswordKeeper.DoubleBufferPanel();
             this.PN_Hours = new PasswordKeeper.DoubleBufferPanel();
@@ -265,7 +267,7 @@
             this.couleurDesLignesToolStripMenuItem,
             this.policeEtCouleurDeCaractèresToolStripMenuItem});
             this.CM_Calendrier.Name = "CM_Calendrier";
-            this.CM_Calendrier.Size = new System.Drawing.Size(290, 100);
+            this.CM_Calendrier.Size = new System.Drawing.Size(290, 128);
             // 
             // ajouterToolStripMenuItem
             // 
@@ -279,6 +281,7 @@
             this.couleurDeFondToolStripMenuItem.Name = "couleurDeFondToolStripMenuItem";
             this.couleurDeFondToolStripMenuItem.Size = new System.Drawing.Size(289, 24);
             this.couleurDeFondToolStripMenuItem.Text = "Couleur de fond…";
+            this.couleurDeFondToolStripMenuItem.Click += new System.EventHandler(this.couleurDeFondToolStripMenuItem_Click);
             // 
             // couleurDesLignesToolStripMenuItem
             // 
@@ -303,29 +306,50 @@
             this.heuresToolStripMenuItem.Name = "heuresToolStripMenuItem";
             this.heuresToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
             this.heuresToolStripMenuItem.Text = "Heures...";
+            this.heuresToolStripMenuItem.Click += new System.EventHandler(this.heuresToolStripMenuItem_Click);
             // 
             // demiHeureToolStripMenuItem
             // 
             this.demiHeureToolStripMenuItem.Name = "demiHeureToolStripMenuItem";
             this.demiHeureToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
             this.demiHeureToolStripMenuItem.Text = "Demi-Heure...";
+            this.demiHeureToolStripMenuItem.Click += new System.EventHandler(this.demiHeureToolStripMenuItem_Click);
             // 
             // verticalesToolStripMenuItem
             // 
             this.verticalesToolStripMenuItem.Name = "verticalesToolStripMenuItem";
             this.verticalesToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.verticalesToolStripMenuItem.Text = "Verticales...";
+            this.verticalesToolStripMenuItem.Click += new System.EventHandler(this.verticalesToolStripMenuItem_Click);
             // 
             // policeEtCouleurDeCaractèresToolStripMenuItem
             // 
+            this.policeEtCouleurDeCaractèresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.titreToolStripMenuItem,
+            this.heureEtDescriptionToolStripMenuItem});
             this.policeEtCouleurDeCaractèresToolStripMenuItem.Name = "policeEtCouleurDeCaractèresToolStripMenuItem";
             this.policeEtCouleurDeCaractèresToolStripMenuItem.Size = new System.Drawing.Size(289, 24);
             this.policeEtCouleurDeCaractèresToolStripMenuItem.Text = "Police et couleur de caractères...";
+            this.policeEtCouleurDeCaractèresToolStripMenuItem.Click += new System.EventHandler(this.policeEtCouleurDeCaractèresToolStripMenuItem_Click);
             // 
             // T_Titre
             // 
             this.T_Titre.Interval = 500;
             this.T_Titre.Tick += new System.EventHandler(this.T_Titre_Tick);
+            // 
+            // titreToolStripMenuItem
+            // 
+            this.titreToolStripMenuItem.Name = "titreToolStripMenuItem";
+            this.titreToolStripMenuItem.Size = new System.Drawing.Size(224, 24);
+            this.titreToolStripMenuItem.Text = "Titre...";
+            this.titreToolStripMenuItem.Click += new System.EventHandler(this.titreToolStripMenuItem_Click);
+            // 
+            // heureEtDescriptionToolStripMenuItem
+            // 
+            this.heureEtDescriptionToolStripMenuItem.Name = "heureEtDescriptionToolStripMenuItem";
+            this.heureEtDescriptionToolStripMenuItem.Size = new System.Drawing.Size(224, 24);
+            this.heureEtDescriptionToolStripMenuItem.Text = "Heure et Description...";
+            this.heureEtDescriptionToolStripMenuItem.Click += new System.EventHandler(this.heureEtDescriptionToolStripMenuItem_Click);
             // 
             // PN_Scroll
             // 
@@ -446,6 +470,8 @@
         private System.Windows.Forms.ToolStripMenuItem demiHeureToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verticalesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem policeEtCouleurDeCaractèresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem titreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem heureEtDescriptionToolStripMenuItem;
 
 
     }

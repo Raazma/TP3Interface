@@ -20,10 +20,34 @@
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="DayColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Orange</Value>
     </Setting>
     <Setting Name="HourColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LineHourColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="LineHalfHourColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="BackgroundColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="VertLineColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="CalendarFontTitre" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Arial Narrow, 7.8pt</Value>
+    </Setting>
+    <Setting Name="CalendarFontColorTitre" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="CalendarFontDesc" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Arial Narrow, 7.8pt</Value>
+    </Setting>
+    <Setting Name="CalendarFontColorDesc" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
     </Setting>
   </Settings>
 </SettingsFile>

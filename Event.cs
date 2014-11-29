@@ -128,25 +128,25 @@ namespace PasswordKeeper
             DC.FillRectangle(new SolidBrush(Color.FromArgb(Int32.Parse( Properties.Settings.Default.Event_Type_Colors[Event_Type].Split(',').ElementAt(0)), Int32.Parse(Properties.Settings.Default.Event_Type_Colors[Event_Type].Split(',').ElementAt(1)), Int32.Parse(Properties.Settings.Default.Event_Type_Colors[Event_Type].Split(',').ElementAt(2)))), GetBorder());
             DC.DrawRectangle(new Pen(Color.Black, 1), GetBorder());
             string time = TimeToString(Starting) + "-" + TimeToString(Ending);
-            
+
 
             int fontSize = 8;
-            using (Font font = new Font("Arial", fontSize-1, FontStyle.Regular, GraphicsUnit.Point))
+            using (Font font = new Font(Properties.Settings.Default.CalendarFontDesc.Name, fontSize - 1, FontStyle.Regular, GraphicsUnit.Point))
             {
-                using (Font font2 = new Font("Arial", fontSize+1, FontStyle.Bold, GraphicsUnit.Point))
+                using (Font font2 = new Font(Properties.Settings.Default.CalendarFontTitre.Name, fontSize + 1, FontStyle.Bold, GraphicsUnit.Point))
                 {
                     System.Windows.Forms.TextFormatFlags flags = System.Windows.Forms.TextFormatFlags.WordEllipsis | System.Windows.Forms.TextFormatFlags.HorizontalCenter;
                     Rectangle border = GetBorder();
                     fontSize += 6;
 
-                    System.Windows.Forms.TextRenderer.DrawText(DC, time, font, border, Color.Black, flags);
+                    System.Windows.Forms.TextRenderer.DrawText(DC, time, font, border, Properties.Settings.Default.CalendarFontColorDesc, flags);
                     border = new Rectangle(border.Location.X, border.Location.Y + fontSize, border.Width, border.Height - fontSize);
 
-                    System.Windows.Forms.TextRenderer.DrawText(DC, Title, font2, border, Color.Black, flags);
+                    System.Windows.Forms.TextRenderer.DrawText(DC, Title, font2, border, Properties.Settings.Default.CalendarFontColorTitre, flags);
                     border = new Rectangle(border.Location.X, border.Location.Y + fontSize, border.Width, border.Height - fontSize);
 
                     flags = System.Windows.Forms.TextFormatFlags.WordBreak;
-                    System.Windows.Forms.TextRenderer.DrawText(DC, Description, font, border, Color.Black, flags);
+                    System.Windows.Forms.TextRenderer.DrawText(DC, Description, font, border, Properties.Settings.Default.CalendarFontColorDesc, flags);
                 }
             }
         }
