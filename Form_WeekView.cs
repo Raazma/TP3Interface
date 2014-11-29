@@ -9,6 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UC_Slider;
 
+/*
+ *  Nous n'avons pas initialiser nos partie de code car tous est mélanger (nous modifions le code de l'autre assez souvant)
+ *  mais pour avoir un aperçu de qui à fait quoi je vous invite à visiter notre Repository sur Github pour ce projet:
+ *  https://github.com/fredpaquette/TP3Interface/commits/master
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
