@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Compact_Agenda.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PasswordKeeper.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="BackColorFormLocation" Type="System.Drawing.Point" Scope="User">
@@ -18,6 +18,12 @@
   &lt;string&gt;255,0,0&lt;/string&gt;
   &lt;string&gt;218,165,32&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="DayColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HourColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

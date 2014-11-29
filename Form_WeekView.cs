@@ -145,6 +145,7 @@ namespace PasswordKeeper
                 DC.DrawLine(pen, location.X, 0, location.X, PN_DaysHeader.Height);
                 DC.DrawString(headerText, PN_DaysHeader.Font, brush, location);
                 DC.DrawString(headerDate, PN_DaysHeader.Font, brush, location.X, location.Y + 14);
+                PN_DaysHeader.BackColor = Properties.Settings.Default.DayColor;
                 date = date.AddDays(1);
             }
             location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * 7), 0);
@@ -168,9 +169,12 @@ namespace PasswordKeeper
                         DC.FillRectangle(B, border);
                     }
                 }
+               
+                
                 String headerText = (hour < 10? "0": "") + hour.ToString() + ":00";
                 DC.DrawString(headerText, PN_DaysHeader.Font, brush, location); 
                 DC.DrawLine(pen, 0,Event.HourToPixel(hour + 1, 0, PN_Hours.Height), PN_Hours.Width, Event.HourToPixel(hour + 1, 0, PN_Hours.Height));
+                PN_Hours.BackColor = Properties.Settings.Default.HourColor;
             }
         }
 
@@ -775,6 +779,45 @@ namespace PasswordKeeper
         private void toolStripComboBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void couleurDeFondToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DLG_HLSColorPicker form = new DLG_HLSColorPicker();
+
+            if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+                Properties.Settings.Default.DayColor = form.color;
+                Properties.Settings.Default.Save();
+
+                PN_DaysHeader.BackColor = Properties.Settings.Default.DayColor;
+            
+            
+            
+            
+            }
+
+
+
+        }
+
+        private void couleurDeFondToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            DLG_HLSColorPicker form = new DLG_HLSColorPicker();
+
+            if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+                Properties.Settings.Default.HourColor = form.color;
+                Properties.Settings.Default.Save();
+
+                PN_Hours.BackColor = Properties.Settings.Default.HourColor;
+
+
+
+
+            }
         }
     }
 }

@@ -65,5 +65,27 @@ namespace PasswordKeeper.Properties {
                 this["Event_Type_Colors"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color DayColor {
+            get {
+                return ((global::System.Drawing.Color)(this["DayColor"]));
+            }
+            set {
+                this["DayColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color HourColor {
+            get {
+                return ((global::System.Drawing.Color)(this["HourColor"]));
+            }
+            set {
+                this["HourColor"] = value;
+            }
+        }
     }
 }
