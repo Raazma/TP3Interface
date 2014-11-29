@@ -80,6 +80,7 @@ namespace PasswordKeeper.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LightGray")]
         public global::System.Drawing.Color HourColor {
             get {
                 return ((global::System.Drawing.Color)(this["HourColor"]));
@@ -182,6 +183,54 @@ namespace PasswordKeeper.Properties {
             }
             set {
                 this["CalendarFontColorDesc"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 7.8pt")]
+        public global::System.Drawing.Font DayFont {
+            get {
+                return ((global::System.Drawing.Font)(this["DayFont"]));
+            }
+            set {
+                this["DayFont"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Snow")]
+        public global::System.Drawing.Color DayFontColor {
+            get {
+                return ((global::System.Drawing.Color)(this["DayFontColor"]));
+            }
+            set {
+                this["DayFontColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 7.8pt")]
+        public global::System.Drawing.Font HourFont {
+            get {
+                return ((global::System.Drawing.Font)(this["HourFont"]));
+            }
+            set {
+                this["HourFont"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color HourFontColor {
+            get {
+                return ((global::System.Drawing.Color)(this["HourFontColor"]));
+            }
+            set {
+                this["HourFontColor"] = value;
             }
         }
     }

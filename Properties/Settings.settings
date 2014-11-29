@@ -23,7 +23,7 @@
       <Value Profile="(Default)">Orange</Value>
     </Setting>
     <Setting Name="HourColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">LightGray</Value>
     </Setting>
     <Setting Name="LineHourColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Black</Value>
@@ -47,6 +47,18 @@
       <Value Profile="(Default)">Arial Narrow, 7.8pt</Value>
     </Setting>
     <Setting Name="CalendarFontColorDesc" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="DayFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 7.8pt</Value>
+    </Setting>
+    <Setting Name="DayFontColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Snow</Value>
+    </Setting>
+    <Setting Name="HourFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 7.8pt</Value>
+    </Setting>
+    <Setting Name="HourFontColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Black</Value>
     </Setting>
   </Settings>

@@ -127,8 +127,8 @@ namespace PasswordKeeper
             Point location;
             DateTime date = _CurrentWeek;
             string[] dayNames = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.DayNames;//[col].Substring(0, 3).ToUpper();
-            Brush brush = new SolidBrush(Color.Snow);
-            Pen pen = new Pen(Color.Snow, 1);
+            Brush brush = new SolidBrush(Properties.Settings.Default.DayFontColor);
+            Pen pen = new Pen(Properties.Settings.Default.DayFontColor, 1);
             for (int dayNum = 0; dayNum < 7; dayNum++)
             {
                 
@@ -145,8 +145,8 @@ namespace PasswordKeeper
                 String headerText = dayNames[dayNum];
                 String headerDate = date.ToShortDateString();
                 DC.DrawLine(pen, location.X, 0, location.X, PN_DaysHeader.Height);
-                DC.DrawString(headerText, PN_DaysHeader.Font, brush, location);
-                DC.DrawString(headerDate, PN_DaysHeader.Font, brush, location.X, location.Y + 14);
+                DC.DrawString(headerText, Properties.Settings.Default.DayFont, brush, location);
+                DC.DrawString(headerDate, Properties.Settings.Default.DayFont, brush, location.X, location.Y + 14);
                 PN_DaysHeader.BackColor = Properties.Settings.Default.DayColor;
                 date = date.AddDays(1);
             }
@@ -156,8 +156,8 @@ namespace PasswordKeeper
 
         private void Fill_Hours_Header(Graphics DC)
         {
-            Brush brush = new SolidBrush(Color.Black);
-            Pen pen = new Pen(Color.Black, 1);
+            Brush brush = new SolidBrush(Properties.Settings.Default.HourFontColor);
+            Pen pen = new Pen(Properties.Settings.Default.HourFontColor, 1);
             for (int hour = 0; hour <= 24; hour++)
             {
                
@@ -174,7 +174,7 @@ namespace PasswordKeeper
                
                 
                 String headerText = (hour < 10? "0": "") + hour.ToString() + ":00";
-                DC.DrawString(headerText, PN_DaysHeader.Font, brush, location); 
+                DC.DrawString(headerText, Properties.Settings.Default.HourFont, brush, location); 
                 DC.DrawLine(pen, 0,Event.HourToPixel(hour + 1, 0, PN_Hours.Height), PN_Hours.Width, Event.HourToPixel(hour + 1, 0, PN_Hours.Height));
                 PN_Hours.BackColor = Properties.Settings.Default.HourColor;
             }
@@ -729,7 +729,7 @@ namespace PasswordKeeper
                 }
             
         }
-
+         
         private void PN_Scroll_Paint(object sender, PaintEventArgs e)
         {
 
@@ -765,11 +765,7 @@ namespace PasswordKeeper
         private void Form_WeekView_Resize(object sender, EventArgs e)
         {
             AdjustZoom();
-            //if (PN_Content.Height < PN_Scroll.Height)
-            //{
-            //    PN_Content.Height = PN_Scroll.Height;
-            //    PN_Hours.Height = PN_Scroll.Height;
-            //}
+            
         }
         private void AdjustZoom()
         {
@@ -779,15 +775,12 @@ namespace PasswordKeeper
             PN_Hours.Refresh();
         }
 
-        private void toolStripComboBox1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void couleurDeFondToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             DLG_HLSColorPicker form = new DLG_HLSColorPicker();
             form.color = Properties.Settings.Default.DayColor;
+            MessageBox.Show(Properties.Settings.Default.DayColor.Name);
             if (form.ShowDialog() == DialogResult.OK)
             {
 
@@ -808,7 +801,7 @@ namespace PasswordKeeper
         private void couleurDeFondToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             DLG_HLSColorPicker form = new DLG_HLSColorPicker();
-
+            form.color = Properties.Settings.Default.HourColor;
             if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
 
@@ -863,6 +856,7 @@ namespace PasswordKeeper
         {
             DLG_HLSColorPicker ColorPicker = new DLG_HLSColorPicker();
             ColorPicker.color = Properties.Settings.Default.VertLineColor;
+           
             if (ColorPicker.ShowDialog() == DialogResult.OK)
             {
                 Properties.Settings.Default.VertLineColor = ColorPicker.color;
@@ -912,6 +906,131 @@ namespace PasswordKeeper
                 Properties.Settings.Default.Save();
                 PN_Content.Refresh();
             }
+        }
+
+        private void choixDeLaDateDeLaSemaineCouranteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GotoCurrentWeek();
+        }
+
+        private void policeEtCouleurDeCaractèresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FontDialog FD = new FontDialog();
+            FD.ShowColor = true;
+            FD.MaxSize = 8;
+            FD.MinSize = 8;
+            FD.AllowScriptChange = false;
+            FD.Font = Properties.Settings.Default.DayFont;
+            FD.Color = Properties.Settings.Default.DayFontColor;
+            if (FD.ShowDialog() == DialogResult.OK)
+            {
+
+                Properties.Settings.Default.DayFont = FD.Font;
+                Properties.Settings.Default.DayFontColor = FD.Color;
+                Properties.Settings.Default.Save();
+                PN_DaysHeader.Refresh();
+            }
+        }
+
+        private void policeEtCouleurDeCaractèresToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FontDialog FD = new FontDialog();
+            FD.ShowColor = true;
+            FD.MaxSize = 8;
+            FD.MinSize = 8;
+            FD.AllowScriptChange = false;
+            FD.Font = Properties.Settings.Default.HourFont;
+            FD.Color = Properties.Settings.Default.HourFontColor;
+            if (FD.ShowDialog() == DialogResult.OK)
+            {
+
+                Properties.Settings.Default.HourFont = FD.Font;
+                Properties.Settings.Default.HourFontColor = FD.Color;
+                Properties.Settings.Default.Save();
+                PN_Hours.Refresh();
+            }
+        }
+
+        private void reporterDuneSemaineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Events.TargetEvent.Starting=Events.TargetEvent.Starting.AddDays(7);
+            Events.TargetEvent.Ending = Events.TargetEvent.Ending.AddDays(7);
+            TableEvents tableEvents = new TableEvents(ConnexionString);
+            tableEvents.UpdateEventRecord(Events.TargetEvent);
+            GetWeekEvents();
+            PN_Content.Refresh();
+        }
+
+        
+
+        private void chaqueJoursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+            for (int i = 1; i <= 365*30; i++)
+            {
+                Event carry = new Event();
+                carry.Title = Events.TargetEvent.Title;
+                carry.Description = Events.TargetEvent.Description;
+                carry.Event_Type = Events.TargetEvent.Event_Type;
+                carry.Starting = Events.TargetEvent.Starting.AddDays(i);
+                carry.Ending = Events.TargetEvent.Ending.AddDays(i);
+                TableEvents tableEvents = new TableEvents(ConnexionString);
+                tableEvents.AddEvent(carry);
+            }
+            GetWeekEvents();
+            PN_Content.Refresh();
+        }
+
+        private void chaqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 1; i <= 52 * 100; i++)
+            {
+                Event carry = new Event();
+                carry.Title = Events.TargetEvent.Title;
+                carry.Description = Events.TargetEvent.Description;
+                carry.Event_Type = Events.TargetEvent.Event_Type;
+                carry.Starting = Events.TargetEvent.Starting.AddDays(i*7);
+                carry.Ending = Events.TargetEvent.Ending.AddDays(i*7);
+                TableEvents tableEvents = new TableEvents(ConnexionString);
+                tableEvents.AddEvent(carry);
+            }
+            GetWeekEvents();
+            PN_Content.Refresh();
+        }
+
+        private void chaqueMoisPourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 1; i <= 12 * 100; i++)
+            {
+                Event carry = new Event();
+                carry.Title = Events.TargetEvent.Title;
+                carry.Description = Events.TargetEvent.Description;
+                carry.Event_Type = Events.TargetEvent.Event_Type;
+                carry.Starting = Events.TargetEvent.Starting.AddMonths(i);
+                carry.Ending = Events.TargetEvent.Ending.AddMonths(i * 7);
+                TableEvents tableEvents = new TableEvents(ConnexionString);
+                tableEvents.AddEvent(carry);
+            }
+            GetWeekEvents();
+            PN_Content.Refresh();
+        }
+
+        private void chaqueAnnéesPourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 1; i <= 100; i++)
+            {
+                Event carry = new Event();
+                carry.Title = Events.TargetEvent.Title;
+                carry.Description = Events.TargetEvent.Description;
+                carry.Event_Type = Events.TargetEvent.Event_Type;
+                carry.Starting = Events.TargetEvent.Starting.AddYears(i);
+                carry.Ending = Events.TargetEvent.Ending.AddYears(i * 7);
+                TableEvents tableEvents = new TableEvents(ConnexionString);
+                tableEvents.AddEvent(carry);
+            }
+            GetWeekEvents();
+            PN_Content.Refresh();
+        
         }
        
     }

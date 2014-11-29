@@ -59,9 +59,9 @@
             this.demiHeureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verticalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.policeEtCouleurDeCaractèresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.T_Titre = new System.Windows.Forms.Timer(this.components);
             this.titreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.heureEtDescriptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.T_Titre = new System.Windows.Forms.Timer(this.components);
             this.PN_Scroll = new PasswordKeeper.DoubleBufferPanel();
             this.PN_Content = new PasswordKeeper.DoubleBufferPanel();
             this.PN_Hours = new PasswordKeeper.DoubleBufferPanel();
@@ -86,7 +86,7 @@
             this.PN_Frame.Controls.Add(this.PN_DaysHeader);
             this.PN_Frame.Controls.Add(this.UCS_Zoom);
             this.PN_Frame.Location = new System.Drawing.Point(0, 0);
-            this.PN_Frame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PN_Frame.Margin = new System.Windows.Forms.Padding(4);
             this.PN_Frame.Name = "PN_Frame";
             this.PN_Frame.Size = new System.Drawing.Size(991, 725);
             this.PN_Frame.TabIndex = 4;
@@ -112,6 +112,7 @@
             this.policeEtCouleurDeCaractèresToolStripMenuItem2.Name = "policeEtCouleurDeCaractèresToolStripMenuItem2";
             this.policeEtCouleurDeCaractèresToolStripMenuItem2.Size = new System.Drawing.Size(289, 24);
             this.policeEtCouleurDeCaractèresToolStripMenuItem2.Text = "Police et couleur de caractères...";
+            this.policeEtCouleurDeCaractèresToolStripMenuItem2.Click += new System.EventHandler(this.policeEtCouleurDeCaractèresToolStripMenuItem2_Click);
             // 
             // FBTN_DecrementWeek
             // 
@@ -122,7 +123,7 @@
             this.FBTN_DecrementWeek.ImageNeutral = global::PasswordKeeper.Properties.Resources.ICON_Left_Neutral;
             this.FBTN_DecrementWeek.ImageOver = global::PasswordKeeper.Properties.Resources.ICON_Left_Over;
             this.FBTN_DecrementWeek.Location = new System.Drawing.Point(4, 2);
-            this.FBTN_DecrementWeek.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.FBTN_DecrementWeek.Margin = new System.Windows.Forms.Padding(5);
             this.FBTN_DecrementWeek.Name = "FBTN_DecrementWeek";
             this.FBTN_DecrementWeek.Size = new System.Drawing.Size(43, 39);
             this.FBTN_DecrementWeek.TabIndex = 2;
@@ -140,7 +141,7 @@
             this.FBTN_IncrementWeek.ImageNeutral = global::PasswordKeeper.Properties.Resources.ICON_Right_Neutral;
             this.FBTN_IncrementWeek.ImageOver = global::PasswordKeeper.Properties.Resources.ICON_Right_Over;
             this.FBTN_IncrementWeek.Location = new System.Drawing.Point(944, 2);
-            this.FBTN_IncrementWeek.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.FBTN_IncrementWeek.Margin = new System.Windows.Forms.Padding(5);
             this.FBTN_IncrementWeek.Name = "FBTN_IncrementWeek";
             this.FBTN_IncrementWeek.Size = new System.Drawing.Size(43, 39);
             this.FBTN_IncrementWeek.TabIndex = 3;
@@ -153,26 +154,28 @@
             this.couleurDeFondToolStripMenuItem1,
             this.policeEtCouleurDeCaractèresToolStripMenuItem1});
             this.CM_Jour.Name = "CM_Jour";
-            this.CM_Jour.Size = new System.Drawing.Size(356, 76);
+            this.CM_Jour.Size = new System.Drawing.Size(290, 76);
             // 
             // choixDeLaDateDeLaSemaineCouranteToolStripMenuItem
             // 
             this.choixDeLaDateDeLaSemaineCouranteToolStripMenuItem.Name = "choixDeLaDateDeLaSemaineCouranteToolStripMenuItem";
-            this.choixDeLaDateDeLaSemaineCouranteToolStripMenuItem.Size = new System.Drawing.Size(355, 24);
-            this.choixDeLaDateDeLaSemaineCouranteToolStripMenuItem.Text = "Choix de la date de la semaine courante…";
+            this.choixDeLaDateDeLaSemaineCouranteToolStripMenuItem.Size = new System.Drawing.Size(289, 24);
+            this.choixDeLaDateDeLaSemaineCouranteToolStripMenuItem.Text = "Aller à la semaine courante";
+            this.choixDeLaDateDeLaSemaineCouranteToolStripMenuItem.Click += new System.EventHandler(this.choixDeLaDateDeLaSemaineCouranteToolStripMenuItem_Click);
             // 
             // couleurDeFondToolStripMenuItem1
             // 
             this.couleurDeFondToolStripMenuItem1.Name = "couleurDeFondToolStripMenuItem1";
-            this.couleurDeFondToolStripMenuItem1.Size = new System.Drawing.Size(355, 24);
+            this.couleurDeFondToolStripMenuItem1.Size = new System.Drawing.Size(289, 24);
             this.couleurDeFondToolStripMenuItem1.Text = "Couleur de fond…";
             this.couleurDeFondToolStripMenuItem1.Click += new System.EventHandler(this.couleurDeFondToolStripMenuItem1_Click);
             // 
             // policeEtCouleurDeCaractèresToolStripMenuItem1
             // 
             this.policeEtCouleurDeCaractèresToolStripMenuItem1.Name = "policeEtCouleurDeCaractèresToolStripMenuItem1";
-            this.policeEtCouleurDeCaractèresToolStripMenuItem1.Size = new System.Drawing.Size(355, 24);
+            this.policeEtCouleurDeCaractèresToolStripMenuItem1.Size = new System.Drawing.Size(289, 24);
             this.policeEtCouleurDeCaractèresToolStripMenuItem1.Text = "Police et couleur de caractères...";
+            this.policeEtCouleurDeCaractèresToolStripMenuItem1.Click += new System.EventHandler(this.policeEtCouleurDeCaractèresToolStripMenuItem1_Click);
             // 
             // UCS_Zoom
             // 
@@ -184,7 +187,7 @@
             this.UCS_Zoom.CursorEnableImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.CursorEnableImage")));
             this.UCS_Zoom.CursorOverImage = ((System.Drawing.Image)(resources.GetObject("UCS_Zoom.CursorOverImage")));
             this.UCS_Zoom.Location = new System.Drawing.Point(0, -46);
-            this.UCS_Zoom.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.UCS_Zoom.Margin = new System.Windows.Forms.Padding(5);
             this.UCS_Zoom.Maximum = 100;
             this.UCS_Zoom.Minimum = 0;
             this.UCS_Zoom.Name = "UCS_Zoom";
@@ -202,7 +205,7 @@
             this.reporterDuneSemaineToolStripMenuItem,
             this.dupliquerToolStripMenuItem});
             this.CM_Event.Name = "contextMenuStrip1";
-            this.CM_Event.Size = new System.Drawing.Size(236, 100);
+            this.CM_Event.Size = new System.Drawing.Size(236, 128);
             this.CM_Event.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // effacerToolStripMenuItem
@@ -223,6 +226,7 @@
             this.reporterDuneSemaineToolStripMenuItem.Name = "reporterDuneSemaineToolStripMenuItem";
             this.reporterDuneSemaineToolStripMenuItem.Size = new System.Drawing.Size(235, 24);
             this.reporterDuneSemaineToolStripMenuItem.Text = "Reporter d’une semaine";
+            this.reporterDuneSemaineToolStripMenuItem.Click += new System.EventHandler(this.reporterDuneSemaineToolStripMenuItem_Click);
             // 
             // dupliquerToolStripMenuItem
             // 
@@ -238,26 +242,30 @@
             // chaqueJoursToolStripMenuItem
             // 
             this.chaqueJoursToolStripMenuItem.Name = "chaqueJoursToolStripMenuItem";
-            this.chaqueJoursToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
-            this.chaqueJoursToolStripMenuItem.Text = "Chaque Jour Pour...";
+            this.chaqueJoursToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.chaqueJoursToolStripMenuItem.Text = "Chaque Jour";
+            this.chaqueJoursToolStripMenuItem.Click += new System.EventHandler(this.chaqueJoursToolStripMenuItem_Click);
             // 
             // chaqueToolStripMenuItem
             // 
             this.chaqueToolStripMenuItem.Name = "chaqueToolStripMenuItem";
-            this.chaqueToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
-            this.chaqueToolStripMenuItem.Text = "Chaque Semaine Pour...";
+            this.chaqueToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.chaqueToolStripMenuItem.Text = "Chaque Semaine";
+            this.chaqueToolStripMenuItem.Click += new System.EventHandler(this.chaqueToolStripMenuItem_Click);
             // 
             // chaqueMoisPourToolStripMenuItem
             // 
             this.chaqueMoisPourToolStripMenuItem.Name = "chaqueMoisPourToolStripMenuItem";
-            this.chaqueMoisPourToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
-            this.chaqueMoisPourToolStripMenuItem.Text = "Chaque Mois Pour...";
+            this.chaqueMoisPourToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.chaqueMoisPourToolStripMenuItem.Text = "Chaque Mois";
+            this.chaqueMoisPourToolStripMenuItem.Click += new System.EventHandler(this.chaqueMoisPourToolStripMenuItem_Click);
             // 
             // chaqueAnnéesPourToolStripMenuItem
             // 
             this.chaqueAnnéesPourToolStripMenuItem.Name = "chaqueAnnéesPourToolStripMenuItem";
-            this.chaqueAnnéesPourToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
-            this.chaqueAnnéesPourToolStripMenuItem.Text = "Chaque Années Pour...";
+            this.chaqueAnnéesPourToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.chaqueAnnéesPourToolStripMenuItem.Text = "Chaque Années";
+            this.chaqueAnnéesPourToolStripMenuItem.Click += new System.EventHandler(this.chaqueAnnéesPourToolStripMenuItem_Click);
             // 
             // CM_Calendrier
             // 
@@ -267,7 +275,7 @@
             this.couleurDesLignesToolStripMenuItem,
             this.policeEtCouleurDeCaractèresToolStripMenuItem});
             this.CM_Calendrier.Name = "CM_Calendrier";
-            this.CM_Calendrier.Size = new System.Drawing.Size(290, 128);
+            this.CM_Calendrier.Size = new System.Drawing.Size(290, 100);
             // 
             // ajouterToolStripMenuItem
             // 
@@ -332,11 +340,6 @@
             this.policeEtCouleurDeCaractèresToolStripMenuItem.Text = "Police et couleur de caractères...";
             this.policeEtCouleurDeCaractèresToolStripMenuItem.Click += new System.EventHandler(this.policeEtCouleurDeCaractèresToolStripMenuItem_Click);
             // 
-            // T_Titre
-            // 
-            this.T_Titre.Interval = 500;
-            this.T_Titre.Tick += new System.EventHandler(this.T_Titre_Tick);
-            // 
             // titreToolStripMenuItem
             // 
             this.titreToolStripMenuItem.Name = "titreToolStripMenuItem";
@@ -350,6 +353,11 @@
             this.heureEtDescriptionToolStripMenuItem.Size = new System.Drawing.Size(224, 24);
             this.heureEtDescriptionToolStripMenuItem.Text = "Heure et Description...";
             this.heureEtDescriptionToolStripMenuItem.Click += new System.EventHandler(this.heureEtDescriptionToolStripMenuItem_Click);
+            // 
+            // T_Titre
+            // 
+            this.T_Titre.Interval = 500;
+            this.T_Titre.Tick += new System.EventHandler(this.T_Titre_Tick);
             // 
             // PN_Scroll
             // 
@@ -418,7 +426,7 @@
             this.ForeColor = System.Drawing.Color.DarkOliveGreen;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(794, 604);
             this.Name = "Form_WeekView";
             this.Text = "Agenda compacte...";
